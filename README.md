@@ -161,6 +161,22 @@ Delete product_name_translation after merge table
 - After merging table, delete order_review
 #### 2.3.3 orders_dataset, order_items and order_payment
 For these table, we should not join them, instead of that, we keep order_ID which have in all tables
+```python
+# filter common order_id in 2 table
+common_order_ids = set(orders_dataset['order_id']) & set(order_payments['order_id']) & set(order_items['order_id'])
+```
+```python
+# filter common order_id in  orders_dataset
+orders_dataset = orders_dataset[orders_dataset['order_id'].isin(common_order_ids)]
+```
+```python
+# filter common order_id in order_payments and order_items
+order_payments = order_payments[order_payments['order_id'].isin(common_order_ids)]
+```
+
+```python
+order_items = order_items[order_items['order_id'].isin(common_order_ids)]
+```
 ### 2.4 Fixing data types
 - Convert automaitcally data type (Most of them change from object to string) and conver column has date to datetime type
 - Change shipping_limit_date type from object to date_time
@@ -231,7 +247,7 @@ customer_data['region'] = customer_data['customer_state'].map(state_to_region)
 
 - sales_df is dataframe which merge all tables together to check correlation between variables
 - payment_sale_corr dataframe
-#### creating sales_df
+#### 4.1 creating sales_df
 ``` python
 # merge order_items with product_dataset
 df = order_items.merge(product_dataset, on='product_id', how='left')
@@ -261,16 +277,17 @@ sales_df = sales_df.merge(df1, on='order_id', how='outer')
 sales_df.describe()
 ```
 
-price	total_item_order	freight_value	product_weight_g	total_value	review_score	delivery_time	estimated_delivery_time	handling_time	weekday_Friday	...	time_slot_Evening Peak	time_slot_Late Evening	time_slot_Late Night	time_slot_Morning	time_slot_Noon	region_Midwest	region_North	region_Northeast	region_South	region_Southeast
-count	95814.000000	95814.000000	95814.000000	95814.000000	95814.000000	95814.000000	95814.0	95814.0	95814.000000	95814.00000	...	95814.000000	95814.000000	95814.000000	95814.000000	95814.000000	95814.000000	95814.000000	95814.000000	95814.000000	95814.000000
-mean	124.441240	1.141274	19.660175	2080.851577	159.086407	4.155416	12.048845	23.1966	2.790521	0.14191	...	0.179807	0.225092	0.047457	0.176394	0.125524	0.058384	0.018567	0.093650	0.143445	0.685954
-std	188.376224	0.534098	15.680450	3720.738143	217.495059	1.284155	9.428425	8.766273	3.462421	0.34896	...	0.384028	0.417645	0.212614	0.381157	0.331314	0.234469	0.134991	0.291343	0.350527	0.464137
-min	0.000000	1.000000	0.000000	2.000000	9.000000	1.000000	0.0	0.0	0.000000	0.00000	...	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000
-25%	41.000000	1.000000	13.000000	300.000000	61.000000	4.000000	6.0	18.0	1.000000	0.00000	...	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000
-50%	79.000000	1.000000	16.000000	700.000000	105.000000	5.000000	10.0	23.0	2.000000	0.00000	...	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	1.000000
-75%	139.000000	1.000000	21.000000	1800.000000	176.000000	5.000000	15.0	28.0	4.000000	0.00000	...	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	1.000000
-max	6735.000000	21.000000	409.000000	40425.000000	13664.000000	5.000000	208.0	154.0	126.000000	1.00000	...	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000
-8 rows × 28 columns
+| Metric                  | price     | total_item_order | freight_value | product_weight_g | total_value | review_score | delivery_time | estimated_delivery_time |
+|-------------------------|-----------|------------------|----------------|------------------|-------------|---------------|----------------|--------------------------|
+| count                   | 95814.00  | 95814.00         | 95814.00       | 95814.00         | 95814.00    | 95814.00      | 95814.0        | 95814.0                  |
+| mean                    | 124.44    | 1.14             | 19.66          | 2080.85          | 159.09      | 4.16          | 12.05          | 23.20                    |
+| std                     | 188.38    | 0.53             | 15.68          | 3720.74          | 217.50      | 1.28          | 9.43           | 8.77                     |
+| min                     | 0.00      | 1.00             | 0.00           | 2.00             | 9.00        | 1.00          | 0.0            | 0.0                      |
+| 25%                     | 41.00     | 1.00             | 13.00          | 300.00           | 61.00       | 4.00          | 6.0            | 18.0                     |
+| 50% (median)            | 79.00     | 1.00             | 16.00          | 700.00           | 105.00      | 5.00          | 10.0           | 23.0                     |
+| 75%                     | 139.00    | 1.00             | 21.00          | 1800.00          | 176.00      | 5.00          | 15.0           | 28.0                     |
+| max                     | 6735.00   | 21.00            | 409.00         | 40425.00         | 13664.00    | 5.00          | 208.0          | 154.0                    |
+
 Depending table above,
 
 - I can see that product_weight = 0 in some orders, we need to replace this value by meadian
@@ -280,8 +297,15 @@ Depending table above,
 ``` python
 sales_df.head()
 ```
+| price | total_item_order | freight_value | product_weight_g | total_value | review_score | delivery_time | estimated_delivery_time | handling_time | weekday_Friday | ... | time_slot_Evening Peak | time_slot_Late Evening | time_slot_Late Night | time_slot_Morning | time_slot_Noon | region_Midwest | region_North | region_Northeast | region_South | region_Southeast |
+|--------|------------------|----------------|------------------|--------------|---------------|----------------|--------------------------|----------------|------------------|-----|------------------------|------------------------|------------------------|-------------------|----------------|------------------|----------------|--------------------|----------------|--------------------|
+| 58     | 1                | 13             | 650              | 72           | 5             | 8              | 16                       | 6              | 0                | ... | 0                      | 0                      | 0                      | 0                 | 0              | 0                | 0              | 0                  | 0              | 1                  |
+| 239    | 1                | 19             | 30000            | 259          | 4             | 16             | 18                       | 8              | 0                | ... | 0                      | 0                      | 0                      | 1                 | 0              | 0                | 0              | 0                  | 0              | 1                  |
+| 199    | 1                | 17             | 3050             | 216          | 5             | 8              | 21                       | 2              | 0                | ... | 0                      | 0                      | 0                      | 0                 | 0              | 0                | 0              | 0                  | 0              | 1                  |
+| 12     | 1                | 12             | 200              | 25           | 4             | 6              | 12                       | 2              | 0                | ... | 0                      | 0
 
-#### creating payment_sale_corr dataframe
+
+#### 4.2 creating payment_sale_corr dataframe
 
 Create dataframe named payment_sale_corr which based on order_payments dataframe which has additional column named total_Sequantial which show which show total number of payment method customer use to pay for an order. first line show the max payment_sequential but other line of order show value = 0
 
@@ -304,3 +328,67 @@ payment_sale_corr = order_payments.drop(columns=['order_id','payment_sequential'
 ``` python
 payment_sale_corr.head()
 ```
+
+| payment_installments | payment_value | payment_type_boleto | payment_type_credit_card | payment_type_debit_card | payment_type_voucher | total_sequential |
+|----------------------|---------------|----------------------|---------------------------|--------------------------|-----------------------|-------------------|
+| 8                    | 99.33         | 0                    | 1                         | 0                        | 0                     | 1                 |
+| 1                    | 24.39         | 0                    | 1                         | 0                        | 0                     | 1                 |
+| 1                    | 65.71         | 0                    | 1                         | 0                        | 0                     | 1                 |
+| 8                    | 107.78        | 0                    | 1                         | 0                        | 0                     | 1                 |
+| 2                    | 128.45        | 0                    | 1                         | 0                        | 0                     | 1                 |
+
+
+#### 4.3 creating retained_corr_matrix dataframe 
+
+``` python
+# count number of order by each customer
+order_counts = df2.groupby('customer_unique_id').size()
+
+# Khách retained nếu mua > 1 lần
+retained_customers = order_counts[order_counts > 1].index
+
+# Gán nhãn retained
+df2['is_retained'] = df2['customer_unique_id'].isin(retained_customers).astype(int)
+```
+
+
+```python
+agg_data = df2.groupby('customer_unique_id').agg({
+    'is_retained': 'first',
+    'order_id': 'count',
+    'total_value': 'sum',
+    'delivery_time': 'mean',
+    'total_item_order': 'first',
+    'price': 'sum',
+    'freight_value': 'sum',
+    'review_score': 'mean',
+    'handling_time': 'mean'
+}).rename(columns={'order_id': 'total_orders', 'total_value': 'total_spent'})
+```
+## Process in Power BI
+- Create a new table named calendar show all date from all dataframe:  Calendar = CALENDARAUTO()
+- Create a table name payment_distinct which each orderid has one row only, get max of payment_sequential and sum of payment_installments from table order_payments
+- Create  a quick measure : there are 2 columns, revenue for new customer_unique_id (revenue from new customer) - use quick measure to create it, and column revenue from old customer = Total revenue - revenue for new customer_unique_id
+- Create meausure name sale-cus metric which include meausure below
+   * AOV by region
+   * AOV by category
+   * Average order value
+   * AvgReviewByCategory
+   * New Customers
+   * New Customers LY(last year)
+   * Num Old customer = [Total customer] - [New Customers]
+   * Previous Year Orders : total order previous year
+   * Repeat customer rate = DIVIDE([Num Old customer],[Total customer],0)
+   * revenue per customer = DIVIDE([Total_revenue], [Total customer],0)
+   * revenue Previous Years
+   * Total customer = DISTINCTCOUNT(customer_data_clean[customer_unique_id])
+   * Total Customers LY (last year)
+   * Total orders = COUNT(orders_dataset_clean[order_id])
+   * Total_revenue = SUM( order_items_clean[total_value])
+- Create table named CustomerFirstOrderMonth which have customer_unique_id and firspurchaseMonth (first month customer purchase order)
+- Create a meausre named RetainedCustomers show number of retained customer, measure named NewCustomers, and RetentionRate = DIVIDE([RetainedCustomers], [NewCustomers])
+- In table order_dataset create columns corhortMonth and CohortIndex
+- Finally check relationship all tables and make a relationship if some does not have it yet.
+
+# Analysis
+## 1. Sales trend
