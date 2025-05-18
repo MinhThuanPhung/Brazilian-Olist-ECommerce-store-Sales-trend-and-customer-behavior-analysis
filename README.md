@@ -390,5 +390,40 @@ agg_data = df2.groupby('customer_unique_id').agg({
 - In table order_dataset create columns corhortMonth and CohortIndex
 - Finally check relationship all tables and make a relationship if some does not have it yet.
 
-# Analysis
+# Exploratory Data Analysis
 ## 1. Sales trend
+
+
+![z6614602329554_ea563dbfcc955b680f52e91d5a28567d](https://github.com/user-attachments/assets/5d980ce9-99dc-4d8f-aeab-03cbca52ed10)
+**Fig.1:** Sales Dashboard
+
+
+![z6614621357829_72b2a9c92a203176ad3308c9b5c8fffb](https://github.com/user-attachments/assets/b1cabbe6-ac3f-466e-b249-523fa8925e7e)
+
+Data shows order in Olist store from Oct 2016 until  Aug 2018. Through these years:
+- Total revenue = 15.29 million USD
+- Total orders = 95.81K orders
+- Average order value = 159.56 USD
+
+![z6614672286276_10b118fe55b6ec4c37d3606d41d861ac](https://github.com/user-attachments/assets/dc0d6bfb-7ee0-4fa7-ae72-ce2ec0d61b30)
+
+Notably, data show only 8 months in 2018 however, revenue increased 22.4% , total orders increased 21.77% compared with 2017
+
+
+![z6614696170162_95c7da0a42d8a86b54a85edd95f6ff65](https://github.com/user-attachments/assets/3c66d22c-3223-4003-a632-60347293ac01)
+
+Top 5 product catergories have the highest revenue repectively
+- Bed_bad_table (number 1)
+- health_beauty
+- Sport_lesure
+- computer accessories
+- watch_gift
+In this list, health_beauty experienced the notible increase from 2016 to 2018, it sold 5800 items which the top 1 the best selling in 2018
+![z6614722791519_a700b0f9538b5dc5faae971f21070126](https://github.com/user-attachments/assets/ad28aebe-cbc4-40a1-bbf6-0d80b40bb893)
+
+Above is Revenue, number of sold items and AOV of top 10 products
+
+
+![z6614740006804_eff3e99899411c3836a594a61a0d8da3](https://github.com/user-attachments/assets/e0e73339-a6fb-417d-b99e-6f9369ec86b9)
+
+Above is the reverse: the bottom 10 product groups with the lowest performance in their category
