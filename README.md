@@ -175,13 +175,13 @@ There are 3 columns need to be added in dataframe orders_database
 - purchase_hour : which show the time customer place order
 - weekday : show the days in week customer placed order
 - time_slot : classify purchase_hour into 7 types
-* late night : if 0 <= hour < 6
-* Early Morning : 6 <= hour < 9:
-* Morning :  9 <= hour < 12:
-* Noon : 12 <= hour < 14 
-* afternoon : 14 <= hour < 17:
-* Evening Peak : 17 <= hour < 20
-* Late Evening : after 20
+   * late night : if 0 <= hour < 6
+   * Early Morning : 6 <= hour < 9:
+   * Morning :  9 <= hour < 12:
+   *  Noon : 12 <= hour < 14 
+   * afternoon : 14 <= hour < 17:
+   * Evening Peak : 17 <= hour < 20
+   * Late Evening : after 20
 There are errors in data, so result may < 0 sometime, flexiblity, we can use order_pusechased_timestamp instead of order_approved at
 
 Then convert data type after create new columns
@@ -260,6 +260,17 @@ sales_df = sales_df.merge(df1, on='order_id', how='outer')
 ``` python
 sales_df.describe()
 ```
+
+price	total_item_order	freight_value	product_weight_g	total_value	review_score	delivery_time	estimated_delivery_time	handling_time	weekday_Friday	...	time_slot_Evening Peak	time_slot_Late Evening	time_slot_Late Night	time_slot_Morning	time_slot_Noon	region_Midwest	region_North	region_Northeast	region_South	region_Southeast
+count	95814.000000	95814.000000	95814.000000	95814.000000	95814.000000	95814.000000	95814.0	95814.0	95814.000000	95814.00000	...	95814.000000	95814.000000	95814.000000	95814.000000	95814.000000	95814.000000	95814.000000	95814.000000	95814.000000	95814.000000
+mean	124.441240	1.141274	19.660175	2080.851577	159.086407	4.155416	12.048845	23.1966	2.790521	0.14191	...	0.179807	0.225092	0.047457	0.176394	0.125524	0.058384	0.018567	0.093650	0.143445	0.685954
+std	188.376224	0.534098	15.680450	3720.738143	217.495059	1.284155	9.428425	8.766273	3.462421	0.34896	...	0.384028	0.417645	0.212614	0.381157	0.331314	0.234469	0.134991	0.291343	0.350527	0.464137
+min	0.000000	1.000000	0.000000	2.000000	9.000000	1.000000	0.0	0.0	0.000000	0.00000	...	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000
+25%	41.000000	1.000000	13.000000	300.000000	61.000000	4.000000	6.0	18.0	1.000000	0.00000	...	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000
+50%	79.000000	1.000000	16.000000	700.000000	105.000000	5.000000	10.0	23.0	2.000000	0.00000	...	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	1.000000
+75%	139.000000	1.000000	21.000000	1800.000000	176.000000	5.000000	15.0	28.0	4.000000	0.00000	...	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	0.000000	1.000000
+max	6735.000000	21.000000	409.000000	40425.000000	13664.000000	5.000000	208.0	154.0	126.000000	1.00000	...	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000	1.000000
+8 rows × 28 columns
 Depending table above,
 
 - I can see that product_weight = 0 in some orders, we need to replace this value by meadian
