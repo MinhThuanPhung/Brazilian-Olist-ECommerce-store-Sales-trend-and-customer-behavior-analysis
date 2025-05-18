@@ -142,5 +142,154 @@ product_name_translation = pd.read_csv('https://raw.githubusercontent.com/MinhTh
 ### 2.1 Remove unesscessary column
 There are some columns, we may not use them, so I delele it
 
-Remove columns : product_name_lenght','product_description_lenght','product_photos_qty','product_length_cm','product_height_cm','product_width_cm' in product_datase
-Remove column review_comment_title', 'review_comment_message and review_id in review_order
+- Remove columns : product_name_lenght','product_description_lenght','product_photos_qty','product_length_cm','product_height_cm','product_width_cm' in product_datase
+
+- Remove column review_comment_title', 'review_comment_message and review_id in review_order
+### 2.2 Handling missing value
+
+There are missing values in orders_dataset, product_dataset and order_review.
+
+- Remove row has missing value in orders_dataset
+- fill missing value in product_weight by median
+- Remove row have missing value in product_category_name of product_dataset
+
+### 2.3 Join table
+#### 2.3.1 product_dataset and product_name_translation
+Delete product_name_translation after merge table
+#### 2.3.2 order_review and orders_dataset
+- Recreate Order_review table, group by order_ID, review_score = average review_score of this order, get the fist line of review+creation_date and review_answer_timestamp if order has been reviewed more than 1
+- After merging table, delete order_review
+#### 2.3.3 orders_dataset, order_items and order_payment
+For these table, we should not join them, instead of that, we keep order_ID which have in all tables
+### 2.4 Fixing data types
+- Convert automaitcally data type (Most of them change from object to string) and conver column has date to datetime type
+- Change shipping_limit_date type from object to date_time
+- Convert date columns to datetime type
+### 2.5 Adding columns
+#### 2.5.1 Adding column in dataframe orders_database
+There are 3 columns need to be added in dataframe orders_database
+
+- delivert_time : Total time which customer received package, it calculated from order approved until it actually delivered to customer
+- Estimated_delivery_time: time from order approved until it estimated delivered
+- handling_time : calculate from order approved until it delivered to shiping carrier
+- purchase_hour : which show the time customer place order
+- weekday : show the days in week customer placed order
+- time_slot : classify purchase_hour into 7 types
+* late night : if 0 <= hour < 6
+* Early Morning : 6 <= hour < 9:
+* Morning :  9 <= hour < 12:
+* Noon : 12 <= hour < 14 
+* afternoon : 14 <= hour < 17:
+* Evening Peak : 17 <= hour < 20
+* Late Evening : after 20
+There are errors in data, so result may < 0 sometime, flexiblity, we can use order_pusechased_timestamp instead of order_approved at
+
+Then convert data type after create new columns
+#### 2.4.2 Adding columns in order_items
+
+Add 2 columns in order_items
+
+- Total_value = price + freight_value
+- total_item_order = get max order_item_id of order
+
+#### 2.4.3 Adding column in Customer_data
+- add column region
+``` python
+# classify customer location by state
+# southest = ['SP', 'RJ', 'ES','MG']
+# northest= ['MA', 'PI', 'CE', 'RN', 'PE', 'PB', 'SE', 'AL', 'BA']
+# north =  ['AM', 'RR', 'AP', 'PA', 'TO', 'RO', 'AC']
+# midwest = ['MT', 'GO', 'MS' ,'DF' ]
+# south = ['SC', 'RS', 'PR']
+
+state_to_region = {
+    # Southeast
+    'SP': 'Southeast', 'RJ': 'Southeast', 'ES': 'Southeast', 'MG': 'Southeast',
+    # Northeast
+    'MA': 'Northeast', 'PI': 'Northeast', 'CE': 'Northeast', 'RN': 'Northeast',
+    'PE': 'Northeast', 'PB': 'Northeast', 'SE': 'Northeast', 'AL': 'Northeast', 'BA': 'Northeast',
+    # North
+    'AM': 'North', 'RR': 'North', 'AP': 'North', 'PA': 'North',
+    'TO': 'North', 'RO': 'North', 'AC': 'North',
+    # Midwest
+    'MT': 'Midwest', 'GO': 'Midwest', 'MS': 'Midwest', 'DF': 'Midwest',
+    # South
+    'SC': 'South', 'RS': 'South', 'PR': 'South'
+}
+
+customer_data['region'] = customer_data['customer_state'].map(state_to_region)
+```
+### 3. Download cleaned_CSV to import PowerBI and make a dashboard
+
+### 4 Creating a new dataframe for checking correlation
+
+- df is dataframe which order_items join in product_dataset
+
+- df1 is dataframe which order_dataset join in customer_data
+
+- df2 is dataframe whwich df1 join in order_ítems
+
+- sales_df is dataframe which merge all tables together to check correlation between variables
+- payment_sale_corr dataframe
+#### creating sales_df
+``` python
+# merge order_items with product_dataset
+df = order_items.merge(product_dataset, on='product_id', how='left')
+```
+``` python
+sales_df = df.groupby('order_id').agg({
+    'price': 'mean',
+    'total_item_order': 'first',
+    'freight_value': 'mean',
+    'product_weight_g': 'mean',
+    'total_value': 'sum'
+
+}).reset_index()
+```
+
+``` python
+# merge customer_data with orders_dataset - df1 then merge it with grouped_df
+df1 = orders_dataset.merge(customer_data, on='customer_id', how='left')
+sales_df = sales_df.merge(df1, on='order_id', how='outer')
+```
+##### cleaning sales_df
+- fill Na of product_weight by median
+- Remove unessary columns : customer_zip_code_prefix, customer_city, order_delivered_carrier_date, order_delivered_customer_date, order_estimated_delivery_date , review_answer_timestamp , review_creation_date , order_approved_at
+- checking describe sales
+- Convert Categorical data to Numerical type : weekdat, time_slot and region columns need to be change. Some has float type, need change to int
+``` python
+sales_df.describe()
+```
+Depending table above,
+
+- I can see that product_weight = 0 in some orders, we need to replace this value by meadian
+- if handling time < 0 , replace by median
+
+
+``` python
+sales_df.head()
+```
+
+#### creating payment_sale_corr dataframe
+
+Create dataframe named payment_sale_corr which based on order_payments dataframe which has additional column named total_Sequantial which show which show total number of payment method customer use to pay for an order. first line show the max payment_sequential but other line of order show value = 0
+
+``` python
+# create a column name total_srquential which show total number of payment method customer use to pay for an order. 
+# first line show the max payment_sequential but other line of order show value = 0
+idx_max = order_payments.groupby('order_id')['payment_sequential'].idxmax()
+
+order_payments['total_sequential'] = 0
+
+order_payments.loc[idx_max, 'total_sequential'] = order_payments.loc[idx_max, 'payment_sequential']
+```
+``` python
+payment_sale_corr = order_payments.drop(columns=['order_id','payment_sequential'],axis=1)
+```
+
+##### cleaning payment_sale_corr 
+- convert datatype of string/object/catergorical data to numerical data
+- convert float to int
+``` python
+payment_sale_corr.head()
+```
