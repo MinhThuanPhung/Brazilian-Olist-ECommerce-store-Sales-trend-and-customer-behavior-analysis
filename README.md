@@ -489,7 +489,7 @@ Top 5 product catergories have the highest revenue repectively
 - Sport_lesure
 - computer accessories
 - watch_gift
-In this list, health_beauty experienced the notible increase from 2016 to 2018, it sold 5800 items which the top 1 the best selling in 2018. Only 5 products group but account for approximately 55% total revenue
+, it sold 5800 items which the top 1 the best selling in 2018. 
 
 Revenue, number of sold items and AOV of top 10 products
 ![z6614722791519_a700b0f9538b5dc5faae971f21070126](https://github.com/user-attachments/assets/ad28aebe-cbc4-40a1-bbf6-0d80b40bb893)
@@ -511,7 +511,12 @@ Orders placed in monday and tuesday bring more revenue than other days in week. 
 ![image](https://github.com/user-attachments/assets/4db2ad7b-a3c5-47d7-96e2-72681ae5b502)
 
 **What do we see through the charts?**
-
+- revenue and total order number inscreased year by year, this is because Olist was enstablished in 2015, in period 2017., 2018, system maybe more stable and more popular so more orders. Moreover, in 2018 ecommerce in Brazil become more recognized so people buying product via e-market more.
+- Through the year, Nov,Dec and Jan are the month have most sales, it is maybe due to the holiday season of the year, when people tend to buy more to prepare for big holiday.
+- Orders placed in monday and tuesday bring more revenue than other days in week. Whiles, afternoon and late night also bring more revenue than other time in a day
+- Top 5 states have highest revenue : SP, RJ, MG, RS, PR, only 5 these states but account for half of total revenue
+- Bed_bad_table, health_beauty, Sport_lesure, computer accessories, watch_gift these product groups have highest revenue and demand in this period. Only 5 products group but account for approximately 55% total revenue. In this list, health_beauty contributed sinificantly in total revenue.
+- Most revenue is contribued by new customer (about 99%)
 
 ## 2. Customer behavior
 
@@ -521,7 +526,8 @@ Average review_score is 4.16 (5 is the highest score)
 ![image](https://github.com/user-attachments/assets/86e419bc-d2f4-496a-b238-d6239a6464ae)
 
 ### State metrix
-![image](https://github.com/user-attachments/assets/b4c725bd-6042-4484-929f-f4a82c08c6e6)
+![image](https://github.com/user-attachments/assets/8d6ce9e5-9262-4add-9ee1-09628cdedc48)
+
 Table show number of new customer,orders,  repeat customer rate, revenue per customer, average score, 
 
 SP, RJ, MG, RS, PR are top 5 state which has the highest customer, order, new orders. 
@@ -547,6 +553,21 @@ Top 5 best selling product category,
 - health_beauty
 - houseware
 These products are the most preferable by customer since they are sold the most.
+
+### Payment and time
+
+Customer prefer use credit card which account for  74% in total all payment method. The second rank is boleto. When customer use credit card, average installments is 3.5, while other payment method is around 1 time
+
+![image](https://github.com/user-attachments/assets/35c2c675-d057-4302-9f1b-8ee2bd6bb84f)
+
+Most of customer paid one time instead of paid many time in one order. 
+![image](https://github.com/user-attachments/assets/008dd461-4861-4ba4-b159-653a7e653ed0)
+
+![image](https://github.com/user-attachments/assets/a87d4e69-efe0-404f-a9a3-fb1485fbee6e)
+
+
+Customer tend to buy product in late evening and afternoon. More order was bought in monday and tuesday
+
 ### Retention
 ![image](https://github.com/user-attachments/assets/474f8094-e8ca-49c7-98e6-81f8381f7f03)
 
@@ -562,19 +583,8 @@ These products are the most preferable by customer since they are sold the most.
 - Analyze High-Performing Cohorts: Study August/September 2017 to see what worked.
 - Post-Purchase Engagement: Offer discounts or personalized product recommendations shortly after the first purchase.
 - Customer Segmentation: Break down cohorts by product, region, or marketing channel to identify what drives better retention.
-### Payment and time
 
-Customer prefer use credit card which account for  74% in total all payment method. The second rank is boleto. When customer use credit card, average installments is 3.5, while other payment method is around 1 time
-
-![image](https://github.com/user-attachments/assets/35c2c675-d057-4302-9f1b-8ee2bd6bb84f)
-
-Most of customer paid one time instead of paid many time in one order. 
-![image](https://github.com/user-attachments/assets/008dd461-4861-4ba4-b159-653a7e653ed0)
-
-![image](https://github.com/user-attachments/assets/a87d4e69-efe0-404f-a9a3-fb1485fbee6e)
-
-
-Customer tend to buy product in late evening and afternoon. More order was bought in monday and tuesday
+**What do we see through the charts?**
 
 ## 3.  RFM Analysis
 RFM stands for Recency - Frequency - Monetary Value, I will be using this metrics to segment customers
