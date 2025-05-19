@@ -252,7 +252,10 @@ customer_data['region'] = customer_data['customer_state'].map(state_to_region)
 ```
 #### 2.1.6. Download cleaned_CSV to import PowerBI and make a dashboard
 
-#### 2.1.7 Creating a new dataframe for checking correlation
+## 2.2 EDA 
+### 2.2.1 Sales correlation
+#### Sales and other factors correlation
+##### Creating a new dataframe for checking correlation
 
 - df is dataframe which order_items join in product_dataset
 
@@ -261,7 +264,8 @@ customer_data['region'] = customer_data['customer_state'].map(state_to_region)
 - df2 is dataframe whwich df1 join in order_ítems
 
 - sales_df is dataframe which merge all tables together to check correlation between variables
-- payment_sale_corr dataframe
+- payment_sale_corr dataframe check correlation betwwen payment and sales.
+
 #####  creating sales_df
 ``` python
 # merge order_items with product_dataset
@@ -309,18 +313,37 @@ Depending table above,
 - if handling time < 0 , replace by median
 
 
-``` python
-sales_df.head()
+
+
+```python
+correlation_matrix_sale = sales_df.corr()
+correlation_matrix_sale.head()
+
+plt.figure(figsize=(20, 15))
+sns.heatmap(correlation_matrix_sale, annot=True, cmap='coolwarm')
+plt.title('Sales Correlation Matrix Heatmap')
+
+plt.show()
 ```
-| price | total_item_order | freight_value | product_weight_g | total_value | review_score | delivery_time | estimated_delivery_time | handling_time | weekday_Friday | ... | time_slot_Evening Peak | time_slot_Late Evening | time_slot_Late Night | time_slot_Morning | time_slot_Noon | region_Midwest | region_North | region_Northeast | region_South | region_Southeast |
-|--------|------------------|----------------|------------------|--------------|---------------|----------------|--------------------------|----------------|------------------|-----|------------------------|------------------------|------------------------|-------------------|----------------|------------------|----------------|--------------------|----------------|--------------------|
-| 58     | 1                | 13             | 650              | 72           | 5             | 8              | 16                       | 6              | 0                | ... | 0                      | 0                      | 0                      | 0                 | 0              | 0                | 0              | 0                  | 0              | 1                  |
-| 239    | 1                | 19             | 30000            | 259          | 4             | 16             | 18                       | 8              | 0                | ... | 0                      | 0                      | 0                      | 1                 | 0              | 0                | 0              | 0                  | 0              | 1                  |
-| 199    | 1                | 17             | 3050             | 216          | 5             | 8              | 21                       | 2              | 0                | ... | 0                      | 0                      | 0                      | 0                 | 0              | 0                | 0              | 0                  | 0              | 1                  |
-| 12     | 1                | 12             | 200              | 25           | 4             | 6              | 12                       | 2              | 0                | ... | 0                      | 0
 
+![tải xuống (3)](https://github.com/user-attachments/assets/9f375535-c6e7-41f9-afa9-5e316a038fb0)
 
-#### 4.2 creating payment_sale_corr dataframe
+### Insights
+
+🔥 Strong Correlations (|corr| > 0.7):
+
+price and total_value show a very strong positive correlation: 0.92. This makes sense, as price is a major component of the total order value. The more expensive items sold, it contribute more to total revenue
+
+total_item_order and total_value: 0.94. The more items ordered, the higher the total order value.
+
+product_weight_g and freight_value: 0.78. Heavier products tend to incur higher shipping costs.
+
+product_weight_g and total_value: 0.70. Heavier products are often more expensive, contributing to a higher total value.
+
+#### Revenue and payment correlation
+Make another heatmap to check correlation between revenue and payment 
+
+#####  creating payment_sale_corr dataframe
 
 Create dataframe named payment_sale_corr which based on order_payments dataframe which has additional column named total_Sequantial which show which show total number of payment method customer use to pay for an order. first line show the max payment_sequential but other line of order show value = 0
 
@@ -352,6 +375,28 @@ payment_sale_corr.head()
 | 8                    | 107.78        | 0                    | 1                         | 0                        | 0                     | 1                 |
 | 2                    | 128.45        | 0                    | 1                         | 0                        | 0                     | 1                 |
 
+```python
+correlation_matrix_sales_2 = payment_sale_corr.corr()
+correlation_matrix_sales_2.head()
+
+plt.figure(figsize=(20, 15))
+sns.heatmap(correlation_matrix_sales_2, annot=True, cmap='coolwarm')
+plt.title('Sales Correlation Matrix Heatmap')
+
+plt.show()
+
+```
+
+![tải xuống](https://github.com/user-attachments/assets/2409e568-43a2-4a0b-903b-649253c048ca)
+
+### Insight
+
+Correlation between payment value and payment_installment = 0.33. Moderate positive correlation — more installments tend to mean higher payment values. While this isn’t a very strong correlation, it’s the most significant one among the listed variables.
+
+--> Promotion added if customer use installment will stimualate customer pay more --> increase revenue
+
+
+### 2.2.2 Retained Customer correlation
 
 ##### creating retained_corr_matrix dataframe 
 
@@ -362,7 +407,7 @@ order_counts = df2.groupby('customer_unique_id').size()
 # Khách retained nếu mua > 1 lần
 retained_customers = order_counts[order_counts > 1].index
 
-# Gán nhãn retained
+# label retained
 df2['is_retained'] = df2['customer_unique_id'].isin(retained_customers).astype(int)
 ```
 
@@ -381,6 +426,7 @@ retained_df = df2.groupby('customer_unique_id').agg({
 }).rename(columns={'order_id': 'total_orders'})
 ```
 ```python
+retained_corr_matrix = retained_df.corr()
 plt.figure(figsize=(8, 6))
 sns.heatmap(retained_corr_matrix, annot=True, cmap='coolwarm', fmt=".2f")
 plt.title("Customer retention Correlation Heatmap", fontsize=14)
@@ -464,51 +510,8 @@ Revenue by day in week and time
 Orders placed in monday and tuesday bring more revenue than other days in week. Whiles, afternoon and late night also bring more revenue than other time in a day. 
 ![image](https://github.com/user-attachments/assets/4db2ad7b-a3c5-47d7-96e2-72681ae5b502)
 
-### 1.1. Sales correlation
-Make a heatmap correlation to check correlation between sales/revenue with other variances. 
+**What do we see through the charts?**
 
-Firsly, heatmap based on sales_df dataframe
-
-```python
-correlation_matrix_sale = sales_df.corr()
-correlation_matrix_sale.head()
-```
-![tải xuống (3)](https://github.com/user-attachments/assets/dae132d6-8552-416d-b2df-29dc9598f11f)
-**Fig.6:** Sales correlation heatmap . Number 1
-
-### Insights
-
-🔥 Strong Correlations (|corr| > 0.7):
-
-price and total_value show a very strong positive correlation: 0.92. This makes sense, as price is a major component of the total order value. The more expensive items sold, it contribute more to total revenue
-
-total_item_order and total_value: 0.94. The more items ordered, the higher the total order value.
-
-product_weight_g and freight_value: 0.78. Heavier products tend to incur higher shipping costs.
-
-product_weight_g and total_value: 0.70. Heavier products are often more expensive, contributing to a higher total value.
-
-##### Revenue and payment correlation
-Make another heatmap to check correlation between revenue and payment 
-
-```python
-correlation_matrix_sales_2 = payment_sale_corr.corr()
-correlation_matrix_sales_2.head()
-```
-```python
-plt.figure(figsize=(20, 15))
-sns.heatmap(correlation_matrix_sales_2, annot=True, cmap='coolwarm')
-plt.title('Sales Correlation Matrix Heatmap')
-
-plt.show()
-```
-![tải xuống](https://github.com/user-attachments/assets/2a10cff6-b4fd-48a4-83e5-85f8bc9dfa40)
-
-### Insight
-
-Correlation between payment value and payment_installment = 0.33. Moderate positive correlation — more installments tend to mean higher payment values. While this isn’t a very strong correlation, it’s the most significant one among the listed variables.
-
---> Promotion added if customer use installment will stimualate customer pay more --> increase revenue
 
 ## 2. Customer behavior
 
