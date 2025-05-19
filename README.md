@@ -536,7 +536,9 @@ Meanwhile, PB, AC,AP, RO, AL are top 5 states have the highes revenue per custom
 
 RR, RJ, CE, MA, PI are top 5 state has highest repeat customer rate
 
-![image](https://github.com/user-attachments/assets/dbec6c2a-131a-423f-bea0-69c8fce11a2f)
+![image](https://github.com/user-attachments/assets/e6d3e985-c747-484b-a6b9-bc5aa251163a)
+
+
 
 Top 5 best selling item by state PR Bed_bad_table, Sport_lesure, furniture decor, health_beauty, computer accessories
 ![image](https://github.com/user-attachments/assets/fe4ee3d7-1460-4162-9777-cbff44a02e50)
@@ -576,19 +578,20 @@ Customer tend to buy product in late evening and afternoon. More order was bough
 - Retention at Month 6 and beyond is very low (under 0.2%) in most cases. Indicates that customers are rarely returning past half a year after first purchase.
 - Most customers make only one or two purchases, with retention falling sharply.
 - Very few customers remain active beyond 3-5 months.
-- This suggests issues with long-term engagement, possibly due to: lack of loyalty incentives or Low purchase frequency by nature of the product or Poor follow-up marketing or customer experience
 
-#### Suggestions for Action
-- Retention Programs: Create email or loyalty campaigns targeting Months 1–3.
-- Analyze High-Performing Cohorts: Study August/September 2017 to see what worked.
-- Post-Purchase Engagement: Offer discounts or personalized product recommendations shortly after the first purchase.
-- Customer Segmentation: Break down cohorts by product, region, or marketing channel to identify what drives better retention.
 
 **What do we see through the charts?**
 
+- Majority order has 5 start rate, however the repeat customer is quite low around 3.49%.
+- SP, RJ, MG, RS, PR are top 5 state which has the highest customer number, however these states has low repeat customer rate. While, RR, RJ, CE, MA, PI are top 5 state has highest repeat customer rate, they do not have many customer however, but customer paid for each order higher than top 5 states have highest customer number and higher than average order value in total.
+- Customer prefer to buy these product in olist Bed_bad_table, Sport_lesure, furniture decor, health_beauty, houseware
+- Customer prefer to use credit card to pay order, in average, customer usually prefer 3 insallment when they paid orders. Most Customer pays once for the order.
+- Buyer tend to buy product in late night or afternoon, it's possiblely because at that time, most people done work or most works are complete so they can spend time on internet and do shopping online. Most orders were placed on monday and tuesday, which shows that customer prefer to order in weekday, in beginning of the week.
+- Retention decline over the time with low rate in all cohort month. This suggests issues with long-term engagement, possibly due to: lack of loyalty incentives or Low purchase frequency by nature of the product or Poor follow-up marketing or customer experience
+
 ## 3.  RFM Analysis
 RFM stands for Recency - Frequency - Monetary Value, I will be using this metrics to segment customers
-
+Since the retention and rate of repeat customer is quite low, it is possiblely show that the loyalty program for customer work ineffectively. We need to clasify customer to run customize programe to win them back. 
 ### 3.1 create RFM dataframe
 df3 was created by merging df1 with order_payment
 Grouping by customer_unique_id to create rfm_df
@@ -669,3 +672,8 @@ Pie chart show Customer Segmentation
 # Outcomes
 
 
+#### Suggestions for Action
+- Retention Programs: Create email or loyalty campaigns targeting Months 1–3.
+- Analyze High-Performing Cohorts: Study August/September 2017 to see what worked.
+- Post-Purchase Engagement: Offer discounts or personalized product recommendations shortly after the first purchase.
+- Customer Segmentation: Break down cohorts by product, region, or marketing channel to identify what drives better retention.
