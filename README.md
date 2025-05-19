@@ -393,8 +393,6 @@ plt.show()
 
 Correlation between payment value and payment_installment = 0.33. Moderate positive correlation — more installments tend to mean higher payment values. While this isn’t a very strong correlation, it’s the most significant one among the listed variables.
 
---> Promotion added if customer use installment will stimualate customer pay more --> increase revenue
-
 
 ### 2.2.2 Retained Customer correlation
 
@@ -587,7 +585,9 @@ Customer tend to buy product in late evening and afternoon. More order was bough
 - Customer prefer to buy these product in olist Bed_bad_table, Sport_lesure, furniture decor, health_beauty, houseware
 - Customer prefer to use credit card to pay order, in average, customer usually prefer 3 insallment when they paid orders. Most Customer pays once for the order.
 - Buyer tend to buy product in late night or afternoon, it's possiblely because at that time, most people done work or most works are complete so they can spend time on internet and do shopping online. Most orders were placed on monday and tuesday, which shows that customer prefer to order in weekday, in beginning of the week.
-- Retention decline over the time with low rate in all cohort month. This suggests issues with long-term engagement, possibly due to: lack of loyalty incentives or Low purchase frequency by nature of the product or Poor follow-up marketing or customer experience
+- Retention decline over the time with low rate in all cohort month. This suggests issues with long-term engagement, possibly due to: lack of loyalty incentives or Low purchase frequency by nature of the product or Poor follow-up marketing or customer experience.
+- Bases on heatmap, We can see the relationship betwween retained customer with total item order is quite high. It notibaly shows that customer buy more item in order will have higher rate to buy more.
+- Heatmap show negative relationship betwween delivery time and review_score --> If want to increase review_score can improve delivery time, make it faster.
 
 ## 3.  RFM Analysis
 RFM stands for Recency - Frequency - Monetary Value, I will be using this metrics to segment customers
@@ -644,13 +644,13 @@ We clasify customer:
     r = int(row['R_score'])
     f = int(row['F_score'])
     m = int(row['M_score'])
- - if r == 5 and f >= 4 and m >= 4: customer is 'Champions'
- - If f >= 4: customer is  'Loyal'
- - if r >= 4 and f >= 2: customer is Potential Loyalist'
- - if r == 5 and f == 1: customer is 'New'
- - if r <= 2 and f >= 2: customer is'At Risk'
- - if r <= 2 and f <= 2 and m <= 2: customer is Hibernating'
- -  else: customer is Others'
+ - if r == 5 and f >= 4 and m >= 4: customer is '**Champions**' - **The Most valuable customers**.
+ - If f >= 4: customer is  '**Loyal**' - **Frequent buyers**, though they may not have purchased recently or spent as much as champions.
+ - if r >= 4 and f >= 2: customer is **Potential Loyalist**' : **Purchased recently** and show **signs of repeating purchases**. On their way to becoming loyal customers.
+ - if r == 5 and f == 1: customer is '**New'** : **First-time buyers** who made a very recent purchase.
+ - if r <= 2 and f >= 2: customer is'**At Risk**' Used to buy frequently, but **haven’t purchased recently**
+ - if r <= 2 and f <= 2 and m <= 2: customer is **Hibernating**' Bought a long time ago, **rarely**, and **spent little**. Low-value, inactive customers.
+ -  else: customer is **Others**' : Customers who don’t clearly fit any specific group above. Could be inconsistent or unpredictable buyers
 
 ```python
 rfm_df.head()
@@ -677,3 +677,5 @@ Pie chart show Customer Segmentation
 - Analyze High-Performing Cohorts: Study August/September 2017 to see what worked.
 - Post-Purchase Engagement: Offer discounts or personalized product recommendations shortly after the first purchase.
 - Customer Segmentation: Break down cohorts by product, region, or marketing channel to identify what drives better retention.
+- --> Promotion added if customer use installment will stimualate customer pay more --> increase revenue
+
