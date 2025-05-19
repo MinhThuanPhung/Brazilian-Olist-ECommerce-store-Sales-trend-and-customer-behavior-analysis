@@ -5,9 +5,10 @@
 ### Purpose
 - Identify top product category and state by sale
 - Analyze sales trends over time to identify seasonality, growth patterns, and sales fluctuations.
+- Discover customer behavior
 - Uncover insights to help improve customer retention, marketing targeting, and sales strategy.
 - Segment customers based on purchasing habits and engagement.
-- Discover customer behavior
+
 ### Outcomes
 - Identify top 5 product_catergory and state has most sales
 - Identified peak sales periods and trends by day, week, and month.
@@ -516,6 +517,7 @@ Orders placed in monday and tuesday bring more revenue than other days in week. 
 - Bed_bad_table, health_beauty, Sport_lesure, computer accessories, watch_gift these product groups have highest revenue and demand in this period. Only 5 products group but account for approximately 55% total revenue. In this list, health_beauty contributed sinificantly in total revenue.
 - Most revenue is contribued by new customer (about 99%)
 
+
 ## 2. Customer behavior
 
 Depending data, we can see that only 3.49% customer is old customer (who already bought at least 2 order), while new customer is 93K customer which account for 96.51% total customer in three years
@@ -554,6 +556,9 @@ Top 5 best selling product category,
 - houseware
 These products are the most preferable by customer since they are sold the most.
 
+![image](https://github.com/user-attachments/assets/fbba0caa-333d-4649-916e-06eeba4b5447)
+Top 5 best selling product in Nov
+
 ### Payment and time
 
 Customer prefer use credit card which account for  74% in total all payment method. The second rank is boleto. When customer use credit card, average installments is 3.5, while other payment method is around 1 time
@@ -581,13 +586,13 @@ Customer tend to buy product in late evening and afternoon. More order was bough
 **What do we see through the charts?**
 
 - Majority order has 5 start rate, however the repeat customer is quite low around 3.49%.
-- SP, RJ, MG, RS, PR are top 5 state which has the highest customer number, however these states has low repeat customer rate. While, RR, RJ, CE, MA, PI are top 5 state has highest repeat customer rate, they do not have many customer however, but customer paid for each order higher than top 5 states have highest customer number and higher than average order value in total.
+- Majority customers located in SP, RJ, MG, RS, PR but most of them buy one order only (has low repeat customer rate) While, RR, RJ, CE, MA, PI are top 5 state has highest repeat customer rate, they do not have many customer however, but customer paid for each order higher than top 5 states have highest customer number and higher than average order value in total.
 - Customer prefer to buy these product in olist Bed_bad_table, Sport_lesure, furniture decor, health_beauty, houseware
 - Customer prefer to use credit card to pay order, in average, customer usually prefer 3 insallment when they paid orders. Most Customer pays once for the order.
 - Buyer tend to buy product in late night or afternoon, it's possiblely because at that time, most people done work or most works are complete so they can spend time on internet and do shopping online. Most orders were placed on monday and tuesday, which shows that customer prefer to order in weekday, in beginning of the week.
 - Retention decline over the time with low rate in all cohort month. This suggests issues with long-term engagement, possibly due to: lack of loyalty incentives or Low purchase frequency by nature of the product or Poor follow-up marketing or customer experience.
 - Bases on heatmap, We can see the relationship betwween retained customer with total item order is quite high. It notibaly shows that customer buy more item in order will have higher rate to buy more.
-- Heatmap show negative relationship betwween delivery time and review_score --> If want to increase review_score can improve delivery time, make it faster.
+- Heatmap show negative relationship betwween delivery time and review_score. It means that customer tend to give higher score if order has short delivery time.
 
 ## 3.  RFM Analysis
 RFM stands for Recency - Frequency - Monetary Value, I will be using this metrics to segment customers
@@ -653,29 +658,39 @@ We clasify customer:
  -  else: customer is **Others**' : Customers who don’t clearly fit any specific group above. Could be inconsistent or unpredictable buyers
 
 ```python
+customer_data1 = customer_data.groupby('customer_unique_id').first().reset_index()
+rfm_df = rfm_df.merge(customer_data1, on='customer_unique_id', how='left')
+```
+
+```python
 rfm_df.head()
 ```
 
+| customer_unique_id                     | Recency | Frequency | Monetary | R_score | F_score | M_score | RFM_Score | Segment      | customer_state | region     |
+|----------------------------------------|---------|-----------|----------|---------|---------|---------|-----------|--------------|----------------|------------|
+| 0000366f3b9a7992bf8c76cfdf3221e2       | 111     | 1         | 141.90   | 4       | 1       | 4       | 414       | Others       | SP             | Southeast  |
+| 0000b849f77a49e4a4ce2b2a4ca5be3f       | 114     | 1         | 27.19    | 4       | 1       | 1       | 411       | Others       | SP             | Southeast  |
+| 0000f46a3911fa3c0805444483337064       | 537     | 1         | 86.22    | 1       | 1       | 2       | 112       | Hibernating  | SC             | South      |
+| 0000f6ccb0745a6a4b88665a16c9f078       | 321     | 1         | 43.62    | 2       | 1       | 1       | 211       | Hibernating  | PA             | North      |
+| 0004aac84e0df4da2b147fca70cf8255       | 288     | 1         | 196.89   | 2       | 1       | 4       | 214       | Others       | SP             | Southeast  |
 
-| customer_unique_id                       | Recency | Frequency | Monetary | R_score | F_score | M_score | RFM_Score | Segment      |
-|------------------------------------------|---------|-----------|----------|---------|---------|---------|------------|---------------|
-| 0000366f3b9a7992bf8c76cfdf3221e2         | 111     | 1         | 141.90   | 4       | 1       | 4       | 414        | Others        |
-| 0000b849f77a49e4a4ce2b2a4ca5be3f         | 114     | 1         | 27.19    | 4       | 1       | 1       | 411        | Others        |
-| 0000f46a3911fa3c0805444483337064         | 537     | 1         | 86.22    | 1       | 1       | 2       | 112        | Hibernating   |
-| 0000f6ccb0745a6a4b88665a16c9f078         | 321     | 1         | 43.62    | 2       | 1       | 1       | 211        | Hibernating   |
-| 0004aac84
 
 Pie chart show Customer Segmentation
 ![image](https://github.com/user-attachments/assets/84e84d86-5961-46f7-bdb4-ceea9ac1ada3)
 
+Filter SP and champion customer, picture blow show to 5 best selling items
+![image](https://github.com/user-attachments/assets/965e4b1f-90c3-4d8a-985b-e83c26747246)
 
-# Outcomes
 
 
 #### Suggestions for Action
-- Retention Programs: Create email or loyalty campaigns targeting Months 1–3.
-- Analyze High-Performing Cohorts: Study August/September 2017 to see what worked.
-- Post-Purchase Engagement: Offer discounts or personalized product recommendations shortly after the first purchase.
-- Customer Segmentation: Break down cohorts by product, region, or marketing channel to identify what drives better retention.
-- --> Promotion added if customer use installment will stimualate customer pay more --> increase revenue
+
+Olist was establish in 2015, in period 2015-2018 is good to make new customer, but after this period, the more important that we need to retain customer then make a loyal customer
+
+
+- Classify customer into 7 groups : Champions, Loyal, Potential Loyalist, New, At Risk, Hibernating, Others. Each notible state, depend on rate of customer type and Top 5 best selling product_category in this state to suggest suitable promotion to add or advertiment for each state. Focus on 5 states has the highest revenue/solds and 5 states have  highest average per order (state customer willing to pay more in each order)
+- For example: for SP state - in top 5 higest revenue state, with champion customer. We can stimulate customer comsumption buy providing coupon for these group product such as : watch_gift, healthy_beauty. And more advertisement for this kind of product.
+- Retention Programs: We can send email with coupon for second order,  cross-sell base on type the most selling product in customer state and product in the last orders. Marketing email should be sent in afternoon or late night since this time customer active the most.
+- There is strong positive correlation betwween customer retention with total item in order. Customer likely buy many items will become loyal customer. So we can consider make a combo product more (cross-sell), for example, beauty_healthy is the one has very high demand in 2017 and sharply increased in 2018 - then become the top 1, So these products potentially are preferable by . We can make a combo such as micella water with makeup products.
+
 
