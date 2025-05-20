@@ -31,104 +31,74 @@ Olist is a Brazilian e-commerce platform that connects small and medium-sized bu
 
 1.	order_items.csv
    
-○	Order_id : order unique identifier
+-**Order_id** : order unique identifier
+-	**order_item_id**: sequential number identifying number of items included in the same order.
+-	**product_id**: product unique identifier
+-	**seller_id**: seller unique identifier
+-	**shipping_limited_date**: Shows the seller shipping limit date for handling the order over to the logistic partner.
+-	**price**: item price
+-	**freight_value**: item freight value item (if an order has more than one item the freight value is splitted between items)
 
-○	order_item_id : sequential number identifying number of items included in the same order.
-
-○	product_id: product unique identifier
-
-○	seller_id: seller unique identifier
-
-○	shipping_limited_date: Shows the seller shipping limit date for handling the order over to the logistic partner.
-
-○	price: item price
-
-○	freight_value: item freight value item (if an order has more than one item the freight value is splitted between items)
 
 2.	customers_data.csv
    
-○	customer_id : key to the orders dataset. Each order has a unique customer_id.
+-	**customer_id** : key to the orders dataset. Each order has a unique customer_id.
+-	**customer_unique_id** : unique identifier of a customer.
+-	**customer_zip_code_prefix** : first five digits of customer zip code
+-	**customer_city** : customer city name
+-	**customer_state** : customer state
 
-○	customer_unique_id : unique identifier of a customer.
-
-○	customer_zip_code_prefix : first five digits of customer zip code
-
-○	customer_city : customer city name
-
-○	customer_state : customer state
 
 3.	order_payments.csv
    
-○	Order_id : unique identifier of an order.
+-	**Order_id** : unique identifier of an order.
+-	**payment_sequential** : a customer may pay an order with more than one payment method. If he does so, a sequence will be created to
+-	**payment_type**: method of payment chosen by the customer.
+-	**payment_installments** : number of installments chosen by the customer.
+-	**payment_value**: transaction value.
 
-○	payment_sequential : a customer may pay an order with more than one payment method. If he does so, a sequence will be created to
-
-○	payment_type: method of payment chosen by the customer.
-
-○	payment_installments : number of installments chosen by the customer.
-
-○	payment_value: transaction value.
 
 4.	order_reviews.csv
    
-○	Order_id : order unique identifier
+-	**Order_id** : order unique identifier
+-	**review_id**: unique review identifier
+-	**review_score**: Note ranging from 1 to 5 given by the customer on a satisfaction survey.
+-	**review_comment_title** : Comment title from the review left by the customer, in Portuguese.
+-	**review_comment_message**: Comment message from the review left by the customer, in Portuguese.
+-	**review_creation_date**: Shows the date in which the satisfaction survey was sent to the customer.
+-	**review_answer_timestamp**: Shows satisfaction survey answer timestamp.
 
-○	review_id: unique review identifier
-
-○	review_score: Note ranging from 1 to 5 given by the customer on a satisfaction survey.
-
-○	review_comment_title : Comment title from the review left by the customer, in Portuguese.
-
-○	review_comment_message: Comment message from the review left by the customer, in Portuguese.
-
-○	review_creation_date: Shows the date in which the satisfaction survey was sent to the customer.
-
-○	review_answer_timestamp: Shows satisfaction survey answer timestamp.
 
 5.	orders_dataset.csv
+- **Order_id** : unique identifier of the order
+-	**customer_id**: key to the customer dataset. Each order has a unique customer_id.
+-	**order_status**: Reference to the order status (delivered, shipped, etc).
+-	**order_purchase_timestamp**: Shows the purchase timestamp.
+-	**order_approved_at** : Shows the payment approval timestamp.
+-	**order_delivered_carrier_date**: Shows the order posting timestamp. When it was handled to the logistic partner.
+-	**order_delivered_customer_date**:: Shows the actual order delivery date to the customer.
+-	**order_estimated_delivery_date**: Shows the estimated delivery date that was informed to customer at the purchase moment.**
    
-○	Order_id : unique identifier of the order
-
-○	customer_id: key to the customer dataset. Each order has a unique customer_id.
-
-○	order_status: Reference to the order status (delivered, shipped, etc).
-
-○	order_purchase_timestamp: Shows the purchase timestamp.
-
-○	order_approved_at : Shows the payment approval timestamp.
-
-○	order_delivered_carrier_date: Shows the order posting timestamp. When it was handled to the logistic partner.
-
-○	order_delivered_customer_date:: Shows the actual order delivery date to the customer.
-
-○	order_estimated_delivery_date: Shows the estimated delivery date that was informed to customer at the purchase moment.
 
 6.	products_dataset.csv
    
-○	product_id: unique product identifier
+-	**product_id**: unique product identifier
+-	**product_category_name**: root category of product, in Portuguese.
+-	**product_name_length** : number of characters extracted from the product name.
+-	**product_description_length**: number of characters extracted from the product description.
+-	**product_photo_qty**: number of product published photos
+-	**product_weight_g** : product weight measured in grams.
+-	**product_length_cm**: product length measured in centimeters.
+-	**product_height_cm**: product height measured in centimeters
+-	**product_width_cm**: product width measured in centimeters
 
-○	product_category_name: root category of product, in Portuguese.
-
-○	product_name_length : number of characters extracted from the product name.
-
-○	product_description_length: number of characters extracted from the product description.
-
-○	product_photo_qty: number of product published photos
-
-○	product_weight_g : product weight measured in grams.
-
-○	product_length_cm: product length measured in centimeters.
-
-○	product_height_cm: product height measured in centimeters
-
-○	product_width_cm: product width measured in centimeters.
 
 
 7.	product_category_name_translation.csv
 
-○	product_category_name : category name in Portuguese
+-	**product_category_name** : category name in Portuguese
+-	**product_category_name_english**: category name in English
 
-○	product_category_name_english: category name in English
 
 ## Technologies Used
 
@@ -333,13 +303,13 @@ plt.show()
 
 🔥 Strong Correlations (|corr| > 0.7):
 
-price and total_value show a very strong positive correlation: 0.92. This makes sense, as price is a major component of the total order value. The more expensive items sold, it contribute more to total revenue
+- price and total_value show a very strong positive correlation: 0.92. This makes sense, as price is a major component of the total order value. The more expensive items sold, it contribute more to total revenue
 
-total_item_order and total_value: 0.94. The more items ordered, the higher the total order value.
+- total_item_order and total_value: 0.94. The more items ordered, the higher the total order value.
 
-product_weight_g and freight_value: 0.78. Heavier products tend to incur higher shipping costs.
+- product_weight_g and freight_value: 0.78. Heavier products tend to incur higher shipping costs.
 
-product_weight_g and total_value: 0.70. Heavier products are often more expensive, contributing to a higher total value.
+- product_weight_g and total_value: 0.70. Heavier products are often more expensive, contributing to a higher total value.
 
 #### Revenue and payment correlation
 Make another heatmap to check correlation between revenue and payment 
@@ -433,7 +403,14 @@ plt.show()
 ```
 
 ![tải xuống (1)](https://github.com/user-attachments/assets/cef1d046-52e6-4b6c-a3a1-8a915c2dd421)
+**Insight**
 
+- total_orders with customer retention (0.77): Customers with more total orders are more likely to be retained.
+
+- total_item_order with customer retention (0.70): Customers ordering more items are more likely to stay.
+
+- freight_value with customer retention (0.37): Higher shipping value has a moderate positive correlation with retention.
+- review_score has a moderate negative correlation with delivery_time (-0.33), which makes sense—longer delivery often leads to lower review scores.
 ## Process in Power BI
 - Create a new table named calendar show all date from all dataframe:  Calendar = CALENDARAUTO()
 - Create a table name payment_distinct which each orderid has one row only, get max of payment_sequential and sum of payment_installments from table order_payments
@@ -528,13 +505,13 @@ Average review_score is 4.16 (5 is the highest score)
 ### State metrix
 ![image](https://github.com/user-attachments/assets/8d6ce9e5-9262-4add-9ee1-09628cdedc48)
 
-Table show number of new customer,orders,  repeat customer rate, revenue per customer, average score, 
+- Table show number of new customer,orders,  repeat customer rate, revenue per customer, average score, 
 
-SP, RJ, MG, RS, PR are top 5 state which has the highest customer, order, new orders. 
+- SP, RJ, MG, RS, PR are top 5 state which has the highest customer, order, new orders. 
 
-Meanwhile, PB, AC,AP, RO, AL are top 5 states have the highes revenue per customer. Customer in these state paid for one order more than other state
+- Meanwhile, PB, AC,AP, RO, AL are top 5 states have the highes revenue per customer. Customer in these state paid for one order more than other state
 
-RR, RJ, CE, MA, PI are top 5 state has highest repeat customer rate
+- RR, RJ, CE, MA, PI are top 5 state has highest repeat customer rate
 
 ![image](https://github.com/user-attachments/assets/e6d3e985-c747-484b-a6b9-bc5aa251163a)
 
