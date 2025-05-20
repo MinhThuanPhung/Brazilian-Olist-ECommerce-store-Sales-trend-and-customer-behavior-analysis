@@ -1,5 +1,5 @@
 # Brazilian-Olist-ECommerce-store-Sales-trend-and-customer-behavior-analysis
-![tải xuống](https://github.com/user-attachments/assets/bb89186a-7ae7-4769-a5a3-74dff11313a3)
+![1_1k72mg1_CZvLptX77zzKTg](https://github.com/user-attachments/assets/ea1c9d33-16c2-4010-b136-3f3f3b2e208c)
 
 ## Purpose and outcome
 ### Purpose
