@@ -191,11 +191,11 @@ Then convert data type after create new columns
 
 Add 2 columns in order_items
 
-- Total_value = price + freight_value
-- total_item_order = get max order_item_id of order
+- Total_value = price + freight_value. Total amount of order
+- total_item_order = get max order_item_id of order. Which show total items in order
 
 ####  Adding column in Customer_data
-- add column region
+- add column region : show the region of customer. Clasify customer location from state into 5 region
 ``` python
 # classify customer location by state
 # southest = ['SP', 'RJ', 'ES','MG']
@@ -302,7 +302,7 @@ plt.show()
 
 ![tải xuống (3)](https://github.com/user-attachments/assets/9f375535-c6e7-41f9-afa9-5e316a038fb0)
 
-### Insights
+### 💡Insights
 
 🔥 Strong Correlations (|corr| > 0.7):
 
@@ -319,7 +319,7 @@ Make another heatmap to check correlation between revenue and payment
 
 #####  creating payment_sale_corr dataframe
 
-Create dataframe named payment_sale_corr which based on order_payments dataframe which has additional column named total_Sequantial which show which show total number of payment method customer use to pay for an order. first line show the max payment_sequential but other line of order show value = 0
+Create dataframe named payment_sale_corr which based on order_payments dataframe which has additional column named total_Sequantial which show which show total he number of times a customer pays for a single order. first line show the max payment_sequential but other line of order show value = 0
 
 ``` python
 # create a column name total_srquential which show total number of payment method customer use to pay for an order. 
@@ -363,7 +363,7 @@ plt.show()
 
 ![tải xuống](https://github.com/user-attachments/assets/2409e568-43a2-4a0b-903b-649253c048ca)
 
-### Insight
+### 💡Insight
 
 Correlation between payment value and payment_installment = 0.33. Moderate positive correlation — more installments tend to mean higher payment values. While this isn’t a very strong correlation, it’s the most significant one among the listed variables.
 
@@ -406,7 +406,7 @@ plt.show()
 ```
 
 ![tải xuống (1)](https://github.com/user-attachments/assets/cef1d046-52e6-4b6c-a3a1-8a915c2dd421)
-**Insight**
+**💡Insight**
 
 - total_orders with customer retention (0.77): Customers with more total orders are more likely to be retained.
 
@@ -449,6 +449,7 @@ plt.show()
  In general, revenue and total order number inscreased through the year, in 2018 revenue each moth increased double compare with 2017. Notiblely, sales increase in end of the year 2017 in Nov, Dec and also Jan. Peak season in these months
 ![z6614621357829_72b2a9c92a203176ad3308c9b5c8fffb](https://github.com/user-attachments/assets/b1cabbe6-ac3f-466e-b249-523fa8925e7e)
 **Fig.2:** Revenue and orders
+
 Data shows order in Olist store from Oct 2016 until  Aug 2018. Through these years:
 - Total revenue = 15.29 million USD
 - Total orders = 95.81K orders
@@ -485,17 +486,18 @@ Top 5 citys have highest orders: Include SP, RJ, MG, RS, PR
 - SP also contribute the higest revenue, which account 30% total revenue in 2018 increase 10% compared with 2017 market share. Only 5 states above account for more than 50% total revenue of all state (2018). This number is around 45% in 2017
 ![image](https://github.com/user-attachments/assets/c0017e4a-62ad-4cdf-96b1-7a0b692a4f5a)
 
-Revenue by day in week and time
+**Revenue by day in week and time**
 Orders placed in monday and tuesday bring more revenue than other days in week. Whiles, afternoon and late night also bring more revenue than other time in a day. 
+
 ![image](https://github.com/user-attachments/assets/4db2ad7b-a3c5-47d7-96e2-72681ae5b502)
 
-**What do we see through the charts?**
-- revenue and total order number inscreased year by year, this is because Olist was enstablished in 2015, in period 2017., 2018, system maybe more stable and more popular so more orders. Moreover, in 2018 ecommerce in Brazil become more recognized so people buying product via e-market more.
-- Through the year, Nov,Dec and Jan are the month have most sales, it is maybe due to the holiday season of the year, when people tend to buy more to prepare for big holiday.
-- Orders placed in monday and tuesday bring more revenue than other days in week. Whiles, afternoon and late night also bring more revenue than other time in a day
-- Top 5 states have highest revenue : SP, RJ, MG, RS, PR, only 5 these states but account for half of total revenue
+**🔍 What do we see through the charts?**
+- ✅ Revenue and total order number inscreased year by year, this is because Olist was enstablished in 2015, in period 2017., 2018, system maybe more stable and more popular so more orders. Moreover, in 2018 ecommerce in Brazil become more recognized so people buying product via e-market more.
+- ✅ Through the year, Nov,Dec and Jan are the month have most sales, it is maybe due to the holiday season of the year, when people tend to buy more to prepare for big holiday.
+- ✅ Orders placed in monday and tuesday bring more revenue than other days in week. Whiles, afternoon and late night also bring more revenue than other time in a day
+- ✅ Top 5 states have highest revenue : SP, RJ, MG, RS, PR, only 5 these states but account for half of total revenue
 - Bed_bad_table, health_beauty, Sport_lesure, computer accessories, watch_gift these product groups have highest revenue and demand in this period. Only 5 products group but account for approximately 55% total revenue. In this list, health_beauty contributed sinificantly in total revenue.
-- Most revenue is contribued by new customer (about 99%)
+- ✅ Most revenue is contribued by new customer (about 99%)
 
 
 ## 2. Customer behavior
@@ -519,15 +521,16 @@ Average review_score is 4.16 (5 is the highest score)
 ![image](https://github.com/user-attachments/assets/e6d3e985-c747-484b-a6b9-bc5aa251163a)
 
 
-
 Top 5 best selling item by state PR Bed_bad_table, Sport_lesure, furniture decor, health_beauty, computer accessories
+
 ![image](https://github.com/user-attachments/assets/fe4ee3d7-1460-4162-9777-cbff44a02e50)
+
 Top 5 best selling item by state SP Bed_bad_table, Sport_lesure, furniture decor, health_beauty, houseware
 ![image](https://github.com/user-attachments/assets/c4f42861-d642-4980-bfb1-1ab393b6c8ae)
 
 
 ### catergory metrix 
-![image](https://github.com/user-attachments/assets/82fc0365-223f-4fc4-b7e8-b091cbf9a9f6)
+
 Top 5 best selling product category, 
 - Bed_bad_table (number 1)
 - Sport_lesure
@@ -536,8 +539,12 @@ Top 5 best selling product category,
 - houseware
 These products are the most preferable by customer since they are sold the most.
 
-![image](https://github.com/user-attachments/assets/fbba0caa-333d-4649-916e-06eeba4b5447)
+![image](https://github.com/user-attachments/assets/82fc0365-223f-4fc4-b7e8-b091cbf9a9f6)
+
 Top 5 best selling product in Nov
+
+![image](https://github.com/user-attachments/assets/fbba0caa-333d-4649-916e-06eeba4b5447)
+
 
 ### Payment and time
 
@@ -563,16 +570,16 @@ Customer tend to buy product in late evening and afternoon. More order was bough
 - Very few customers remain active beyond 3-5 months.
 
 
-**What do we see through the charts?**
+**🔍 What do we see through the charts?**
 
-- Majority order has 5 start rate, however the repeat customer is quite low around 3.49%.
-- Majority customers located in SP, RJ, MG, RS, PR but most of them buy one order only (has low repeat customer rate) While, RR, RJ, CE, MA, PI are top 5 state has highest repeat customer rate, they do not have many customer however, but customer paid for each order higher than top 5 states have highest customer number and higher than average order value in total.
-- Customer prefer to buy these product in olist Bed_bad_table, Sport_lesure, furniture decor, health_beauty, houseware
-- Customer prefer to use credit card to pay order, in average, customer usually prefer 3 insallment when they paid orders. Most Customer pays once for the order.
-- Buyer tend to buy product in late night or afternoon, it's possiblely because at that time, most people done work or most works are complete so they can spend time on internet and do shopping online. Most orders were placed on monday and tuesday, which shows that customer prefer to order in weekday, in beginning of the week.
-- Retention decline over the time with low rate in all cohort month. This suggests issues with long-term engagement, possibly due to: lack of loyalty incentives or Low purchase frequency by nature of the product or Poor follow-up marketing or customer experience.
-- Bases on heatmap, We can see the relationship betwween retained customer with total item order is quite high. It notibaly shows that customer buy more item in order will have higher rate to buy more.
-- Heatmap show negative relationship betwween delivery time and review_score. It means that customer tend to give higher score if order has short delivery time.
+- ✅ Majority order has 5 start rate, however the repeat customer is quite low around 3.49%.
+- ✅ Majority customers located in SP, RJ, MG, RS, PR but most of them buy one order only (has low repeat customer rate) While, RR, RJ, CE, MA, PI are top 5 state has highest repeat customer rate, they do not have many customer however, but customer paid for each order higher than top 5 states have highest customer number and higher than average order value in total.
+- ✅ Customer prefer to buy these product in olist Bed_bad_table, Sport_lesure, furniture decor, health_beauty, houseware
+- ✅ Customer prefer to use credit card to pay order, in average, customer usually prefer 3 insallment when they paid orders. Most Customer pays once for the order.
+- ✅ Buyer tend to buy product in late night or afternoon, it's possiblely because at that time, most people done work or most works are complete so they can spend time on internet and do shopping online. Most orders were placed on monday and tuesday, which shows that customer prefer to order in weekday, in beginning of the week.
+- ✅ Retention decline over the time with low rate in all cohort month. This suggests issues with long-term engagement, possibly due to: lack of loyalty incentives or Low purchase frequency by nature of the product or Poor follow-up marketing or customer experience.
+- ✅ Bases on heatmap, We can see the relationship betwween retained customer with total item order is quite high. It notibaly shows that customer buy more item in order will have higher rate to buy more.
+- ✅ Heatmap show negative relationship betwween delivery time and review_score. It means that customer tend to give higher score if order has short delivery time.
 
 ## 3.  RFM Analysis
 RFM stands for Recency - Frequency - Monetary Value, I will be using this metrics to segment customers
