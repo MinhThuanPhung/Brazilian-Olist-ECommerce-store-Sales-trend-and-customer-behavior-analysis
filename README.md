@@ -238,7 +238,7 @@ customer_data['region'] = customer_data['customer_state'].map(state_to_region)
 - df2 is dataframe whwich df1 join in order_ítems
 
 - sales_df is dataframe which merge all tables together to check correlation between variables
-- payment_sale_corr dataframe check correlation betwwen payment and sales.
+
 
 #####  creating sales_df
 ``` python
@@ -269,22 +269,22 @@ sales_df = sales_df.merge(df1, on='order_id', how='outer')
 ``` python
 sales_df.describe()
 ```
+| Thống kê         | price   | total_item_order | freight_value | product_weight_g | total_value | review_score | delivery_time |
+|------------------|---------|------------------|----------------|------------------|--------------|----------------|----------------|
+| **count**        | 95814.0 | 95814.000000     | 95814.0        | 95814.0          | 95814.0     | 95814.0       | 95814.0        |
+| **mean**         | 125.04  | 1.14             | 20.14          | 2080.81          | 159.56      | 4.16          | 12.05          |
+| **std**          | 188.31  | 0.53             | 15.68          | 3720.76          | 217.50      | 1.28          | 9.43           |
+| **min**          | 0.85    | 1.00             | 0.00           | 0.00             | 9.59        | 1.0           | 0.00           |
+| **25% (Q1)**     | 41.90   | 1.00             | 13.37          | 300.0            | 61.80       | 4.0           | 6.00           |
+| **50% (Median)** | 79.00   | 1.00             | 16.35          | 700.0            | 105.28      | 5.0           | 10.00          |
+| **75% (Q3)**     | 139.90  | 1.00             | 21.15          | 1800.0           | 176.16      | 5.0           | 15.00          |
+| **max**          | 6735.00 | 21.00            | 409.68         | 40425.0          | 13664.08    | 5.0           | 208.00         |
 
-| Metric                  | price     | total_item_order | freight_value | product_weight_g | total_value | review_score | delivery_time | estimated_delivery_time |
-|-------------------------|-----------|------------------|----------------|------------------|-------------|---------------|----------------|--------------------------|
-| count                   | 95814.00  | 95814.00         | 95814.00       | 95814.00         | 95814.00    | 95814.00      | 95814.0        | 95814.0                  |
-| mean                    | 124.44    | 1.14             | 19.66          | 2080.85          | 159.09      | 4.16          | 12.05          | 23.20                    |
-| std                     | 188.38    | 0.53             | 15.68          | 3720.74          | 217.50      | 1.28          | 9.43           | 8.77                     |
-| min                     | 0.00      | 1.00             | 0.00           | 2.00             | 9.00        | 1.00          | 0.0            | 0.0                      |
-| 25%                     | 41.00     | 1.00             | 13.00          | 300.00           | 61.00       | 4.00          | 6.0            | 18.0                     |
-| 50% (median)            | 79.00     | 1.00             | 16.00          | 700.00           | 105.00      | 5.00          | 10.0           | 23.0                     |
-| 75%                     | 139.00    | 1.00             | 21.00          | 1800.00          | 176.00      | 5.00          | 15.0           | 28.0                     |
-| max                     | 6735.00   | 21.00            | 409.00         | 40425.00         | 13664.00    | 5.00          | 208.0          | 154.0                    |
 
 Depending table above,
 
-- I can see that product_weight = 0 in some orders, we need to replace this value by meadian
-- replace delivery time, estimated_delivery with 0 value by median
+- I can see that shipping_weight = 0 in some orders, we need to replace this value by meadian
+- replace delivery time with 0 value by median
 
 
 
@@ -299,8 +299,8 @@ plt.title('Sales Correlation Matrix Heatmap')
 
 plt.show()
 ```
+![tải xuống (4)](https://github.com/user-attachments/assets/060ce184-bdb6-4048-b97e-da001c5fd696)
 
-![tải xuống (3)](https://github.com/user-attachments/assets/9f375535-c6e7-41f9-afa9-5e316a038fb0)
 
 ### 💡Insights
 
@@ -313,59 +313,6 @@ plt.show()
 - product_weight_g and freight_value: 0.78. Heavier products tend to incur higher shipping costs.
 
 - product_weight_g and total_value: 0.70. Heavier products are often more expensive, contributing to a higher total value.
-
-#### Revenue and payment correlation
-Make another heatmap to check correlation between revenue and payment 
-
-#####  creating payment_sale_corr dataframe
-
-Create dataframe named payment_sale_corr which based on order_payments dataframe which has additional column named total_Sequantial which show which show total he number of times a customer pays for a single order. first line show the max payment_sequential but other line of order show value = 0
-
-``` python
-# create a column name total_srquential which show total number of payment method customer use to pay for an order. 
-# first line show the max payment_sequential but other line of order show value = 0
-idx_max = order_payments.groupby('order_id')['payment_sequential'].idxmax()
-
-order_payments['total_sequential'] = 0
-
-order_payments.loc[idx_max, 'total_sequential'] = order_payments.loc[idx_max, 'payment_sequential']
-```
-``` python
-payment_sale_corr = order_payments.drop(columns=['order_id','payment_sequential'],axis=1)
-```
-
-##### cleaning payment_sale_corr 
-- convert datatype of string/object/catergorical data to numerical data
-- convert float to int
-``` python
-payment_sale_corr.head()
-```
-
-| payment_installments | payment_value | payment_type_boleto | payment_type_credit_card | payment_type_debit_card | payment_type_voucher | total_sequential |
-|----------------------|---------------|----------------------|---------------------------|--------------------------|-----------------------|-------------------|
-| 8                    | 99.33         | 0                    | 1                         | 0                        | 0                     | 1                 |
-| 1                    | 24.39         | 0                    | 1                         | 0                        | 0                     | 1                 |
-| 1                    | 65.71         | 0                    | 1                         | 0                        | 0                     | 1                 |
-| 8                    | 107.78        | 0                    | 1                         | 0                        | 0                     | 1                 |
-| 2                    | 128.45        | 0                    | 1                         | 0                        | 0                     | 1                 |
-
-```python
-correlation_matrix_sales_2 = payment_sale_corr.corr()
-correlation_matrix_sales_2.head()
-
-plt.figure(figsize=(20, 15))
-sns.heatmap(correlation_matrix_sales_2, annot=True, cmap='coolwarm')
-plt.title('Sales Correlation Matrix Heatmap')
-
-plt.show()
-
-```
-
-![tải xuống](https://github.com/user-attachments/assets/2409e568-43a2-4a0b-903b-649253c048ca)
-
-### 💡Insight
-
-Correlation between payment value and payment_installment = 0.33. Moderate positive correlation — more installments tend to mean higher payment values. While this isn’t a very strong correlation, it’s the most significant one among the listed variables.
 
 
 ### 2.2.2 Retained Customer correlation
