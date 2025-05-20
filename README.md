@@ -660,7 +660,7 @@ Filter SP and champion customer, picture blow show to 5 best selling items
 
 
 
-#### Suggestions for Action
+#### Suggestions
 
 Olist was establish in 2015, in period 2015-2018 is good to make new customer, but after this period, the more important that we need to retain customer then make a loyal customer
 
