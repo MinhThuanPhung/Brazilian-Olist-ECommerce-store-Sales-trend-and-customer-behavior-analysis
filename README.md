@@ -221,6 +221,9 @@ state_to_region = {
 
 customer_data['region'] = customer_data['customer_state'].map(state_to_region)
 ```
+#### descriptive statistics of dataframe
+- There are payment value = 0, replace by total value with corresponding orderID in order_items dataframe
+- There are some order with total_item_order = 0, replace by median 
 #### 2.1.6. Download cleaned_CSV to import PowerBI and make a dashboard
 
 ## 2.2 EDA 
@@ -281,7 +284,7 @@ sales_df.describe()
 Depending table above,
 
 - I can see that product_weight = 0 in some orders, we need to replace this value by meadian
-- if handling time < 0 , replace by median
+- replace delivery time, estimated_delivery with 0 value by median
 
 
 
