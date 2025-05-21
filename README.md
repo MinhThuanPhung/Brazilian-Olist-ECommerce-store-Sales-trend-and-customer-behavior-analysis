@@ -444,37 +444,44 @@ Orders placed in monday and tuesday bring more revenue than other days in week. 
 ![image](https://github.com/user-attachments/assets/a21f30ac-b1b2-487e-959d-f91d2e990212)
 
 
-**🔍 What do we see through the charts?**
+#### **🔍 What do we see through the charts?**
 - ✅ Revenue and total order number inscreased year by year, this is because Olist was enstablished in 2015, in period 2017., 2018, system maybe more stable and more popular so more orders. Moreover, in 2018 ecommerce in Brazil become more recognized so people buying product via e-market more.
-- ✅ Through the year, Nov,Dec and Jan are the month have most sales, it is maybe due to the holiday season of the year, when people tend to buy more to prepare for big holiday.
+- ✅ Through the year Nov, Dec are the month have most sales, it is maybe due to the holiday season of the year, when people tend to buy more to prepare for big holiday.
 - ✅ Orders placed in monday and tuesday bring more revenue than other days in week. Whiles, afternoon and late night also bring more revenue than other time in a day
 - ✅ Top 5 states have highest revenue : SP, RJ, MG, RS, PR, only 5 these states but account for half of total revenue
 - Bed_bad_table, health_beauty, Sport_lesure, computer accessories, watch_gift these product groups have highest revenue and demand in this period. Only 5 products group but account for approximately 55% total revenue. In this list, health_beauty contributed sinificantly in total revenue.
 - ✅ Most revenue is contribued by new customer (about 99%)
 
-**🤔What caused sales increased in those years?**
+#### **🤔 What caused sales increased in those years?**
 
 There are only 2 months in 2016 in this data, So trend focuses on 2017 and 2018_
 ![image](https://github.com/user-attachments/assets/3697d769-812a-4b1e-bd13-c5d960bcda68)
 
 👉  Number of product increased sharply . In 2018, there are total 20090 products , increased 20.22% compared with 2017.
+
 👉 Total about 60k items sold in 2018 compare wih 49K in 2017
+
 👉 New customer in 2018 increase 21.21% compared with 2017
+
 👉 The top 2 best-selling product groups have seen a significant expansion in their product catalogs compared with 2017. They are  are beauty healthy( 61.03%) , bed_bath_table (17.69%), computer_accesories (12.44%) while average all product is 1.1% . The demand for these products also increase notably  beauty healthy( 62.93%) ,  computer_accesories (53.84%)
 
 ![image](https://github.com/user-attachments/assets/2c7ace13-4b87-4a5f-82d6-96d910bd2aa1)
 
    
-**🤔Why sales increase sharply in Nov 2017**
+#### **🤔Why sales increase sharply in Nov 2017**
 
 ![image](https://github.com/user-attachments/assets/e83a9776-95fd-465a-a399-5130274bf379)
 ![image](https://github.com/user-attachments/assets/99f257ae-f381-48e0-82a2-8f86da89adbc)
 
 
 👉 Number of product increased significantly from , 2731 in September, 2917 in October to 4371 in Novemeber. Item solds in this month increased tp 8400 items sold (growed 62% compared with october)
+
 👉 New customers are 7011 Customers in November , increase 63% compared with the last month.
+
 👉 Total product increased from 2917 product in Oct, to 4371 products in Nov
+
 👉 There was an increase high demend for these product beauty healthy (76.58%,  bed_bath_table  (101%)
+
 ![image](https://github.com/user-attachments/assets/0456e9b3-a8df-478d-887c-c86aade78827)
 
 
@@ -705,14 +712,58 @@ Top product which has grow sold > 150% and total sold items > 700 items In 2018
   
 All customer prefer to pay order by credit card and boleto
 
-#### Recommendation
+### Recommendation
 
 Olist was establish in 2015, in period 2015-2018 is good to make new customer, but after this period, the more important that we need to retain customer then make a loyal customer
 
+#### **💡General for all segments**
 
-- Classify customer into 7 groups : Champions, Loyal, Potential Loyalist, New, At Risk, Hibernating, Others. Each notible state, depend on rate of customer type and Top 5 best selling product_category in this state to suggest suitable promotion to add or advertiment for each state. Focus on 5 states has the highest revenue/solds and 5 states have  highest average per order (state customer willing to pay more in each order)
-- For example: for SP state - in top 5 higest revenue state, with champion customer. We can stimulate customer comsumption buy providing coupon for these group product such as : watch_gift, healthy_beauty. And more advertisement for this kind of product.
-- Retention Programs: We can send email with coupon for second order,  cross-sell base on type the most selling product in customer state and product in the last orders. Marketing email should be sent in afternoon or late night since this time customer active the most.
-- There is strong positive correlation betwween customer retention with total item in order. Customer likely buy many items will become loyal customer. So we can consider make a combo product more (cross-sell), for example, beauty_healthy is the one has very high demand in 2017 and sharply increased in 2018 - then become the top 1, So these products potentially are preferable by . We can make a combo such as micella water with makeup products.
+- Improve Delivery Speed: Shorter delivery time = higher review scores.
+
+- Boost Sales at Week Start: Launch promotions or email blasts on Mondays and Tuesdays.
+
+- Personalize mail or ads depending on the history buying and give suggestion for top pick product or related products based on prefered product.s.
+
+- Encourage bulk buying:  boost cross-category sales since customers who buy more items per order are more likely to return (per heatmap insights).
+
+- End of year sale (Nov, Dec) to maximized sales
+
+
+
+#### **💡 Customize for each customer segments**
+
+#### **1. Champion**
+
+1. Exclusive VIP or Loyalty Programs: Offer premium perks, priority delivery, and special services.
+2. Upsell/Cross-sell High-End Products: These customers are more willing to spend more per order.
+3. Personalized Communication: Send tailored emails on Mondays and Thursdays — their most active days.
+4. Flexible Installment Plans: Since they tend to prefer paying in multiple installments, offer more options.
+
+#### **2. Loyal Customers**
+
+1. Improve Delivery Speed: Faster delivery can increase review scores and satisfaction.
+2. Targeted Discounts on Buying Days: Offer deals on Mondays and Tuesdays, especially in the afternoon/evening.
+3. Encourage Higher Spending: Bundle products or offer tiered discounts for larger carts.
+4. Introduce Potential Products: Suggest products like telephony or watch_gift to diversify their interests.
+
+
+#### **3. New Customers**
+
+1. Welcome Campaign: Send onboarding emails with guides, product recommendations, and discounts on the next order.
+2. Post-Purchase Care: Follow up with satisfaction surveys and personalized product suggestions.
+3. Early-Bird Offers: Provide special discounts during the first week after purchase.
+
+
+#### **4. At Risk Customers**
+
+1. Automated Win-Back Campaigns: Use email or SMS to send personalized offers and reminders.
+2. Focus on Delivery Improvement: Faster and more reliable shipping is key.
+3. Customer Feedback: Run simple surveys to understand why they left.
+
+#### **5. Low-Value Customers**
+
+1. Regular Promotions: Offer seasonal discounts or product bundles to drive engagement.
+2. Popular Product Suggestions: Recommend top-selling items like bed bath table, sport_leisure, etc.
+
 
 
