@@ -385,7 +385,7 @@ plt.show()
 - In table order_dataset create columns corhortMonth and CohortIndex
 - Finally check relationship all tables and make a relationship if some does not have it yet.
 
-## Visualize and analysis
+## 📊 Visualize and analysis
 ## 1. Sales trend
 
 ![image](https://github.com/user-attachments/assets/b402d220-2c01-450f-b9ce-e88d718a5530)
@@ -452,7 +452,8 @@ Orders placed in monday and tuesday bring more revenue than other days in week. 
 - Bed_bad_table, health_beauty, Sport_lesure, computer accessories, watch_gift these product groups have highest revenue and demand in this period. Only 5 products group but account for approximately 55% total revenue. In this list, health_beauty contributed sinificantly in total revenue.
 - ✅ Most revenue is contribued by new customer (about 99%)
 
-**What caused sales increased in those years?**
+**❓What caused sales increased in those years?**
+
 There are only 2 months in 2016 in this data, So trend focuses on 2017 and 2018_
 ![image](https://github.com/user-attachments/assets/3697d769-812a-4b1e-bd13-c5d960bcda68)
 
@@ -460,10 +461,12 @@ There are only 2 months in 2016 in this data, So trend focuses on 2017 and 2018_
 2. Total about 60k items sold in 2018 compare wih 49K in 2017
 3. New customer in 2018 increase 21.21% compared with 2017
 4. The top 2 best-selling product groups have seen a significant expansion in their product catalogs compared with 2017. They are  are beauty healthy( 61.03%) , bed_bath_table (17.69%), computer_accesories (12.44%) while average all product is 1.1% . The demand for these products also increase notably  beauty healthy( 62.93%) ,  computer_accesories (53.84%)
+5. 
 ![image](https://github.com/user-attachments/assets/2c7ace13-4b87-4a5f-82d6-96d910bd2aa1)
 
    
-**Why sales increase sharply in Nov 2017**
+**❓Why sales increase sharply in Nov 2017**
+
 ![image](https://github.com/user-attachments/assets/e83a9776-95fd-465a-a399-5130274bf379)
 ![image](https://github.com/user-attachments/assets/99f257ae-f381-48e0-82a2-8f86da89adbc)
 
