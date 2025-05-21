@@ -452,7 +452,7 @@ Orders placed in monday and tuesday bring more revenue than other days in week. 
 - Bed_bad_table, health_beauty, Sport_lesure, computer accessories, watch_gift these product groups have highest revenue and demand in this period. Only 5 products group but account for approximately 55% total revenue. In this list, health_beauty contributed sinificantly in total revenue.
 - ✅ Most revenue is contribued by new customer (about 99%)
 
-**❓What caused sales increased in those years?**
+**🤔What caused sales increased in those years?**
 
 There are only 2 months in 2016 in this data, So trend focuses on 2017 and 2018_
 ![image](https://github.com/user-attachments/assets/3697d769-812a-4b1e-bd13-c5d960bcda68)
@@ -465,7 +465,7 @@ There are only 2 months in 2016 in this data, So trend focuses on 2017 and 2018_
 ![image](https://github.com/user-attachments/assets/2c7ace13-4b87-4a5f-82d6-96d910bd2aa1)
 
    
-**❓Why sales increase sharply in Nov 2017**
+**🤔Why sales increase sharply in Nov 2017**
 
 ![image](https://github.com/user-attachments/assets/e83a9776-95fd-465a-a399-5130274bf379)
 ![image](https://github.com/user-attachments/assets/99f257ae-f381-48e0-82a2-8f86da89adbc)
@@ -560,9 +560,11 @@ Customer tend to buy product in late evening and afternoon. More order was bough
 - ✅ Heatmap show negative relationship betwween delivery time and review_score. It means that customer tend to give higher score if order has short delivery time.
 
 ## 3.  RFM Analysis
+
 RFM stands for Recency - Frequency - Monetary Value, I will be using this metrics to segment customers
 Since the retention and rate of repeat customer is quite low, it is possiblely show that the loyalty program for customer work ineffectively. We need to clasify customer to run customize programe to win them back. 
 ### 3.1 create RFM dataframe
+
 df3 was created by merging df1 with order_payment
 Grouping by customer_unique_id to create rfm_df
 ``` python
@@ -611,16 +613,22 @@ We have table
 
 ### 3.2 Clasify customer type based on RMF score
 We clasify customer:
+ def rfm_segment(row):
     r = int(row['R_score'])
     f = int(row['F_score'])
     m = int(row['M_score'])
- - if r == 5 and f >= 4 and m >= 4: customer is '**Champions**' - **The Most valuable customers**.
- - If f >= 4: customer is  '**Loyal**' - **Frequent buyers**, though they may not have purchased recently or spent as much as champions.
- - if r >= 4 and f >= 2: customer is **Potential Loyalist**' : **Purchased recently** and show **signs of repeating purchases**. On their way to becoming loyal customers.
- - if r == 5 and f == 1: customer is '**New'** : **First-time buyers** who made a very recent purchase.
- - if r <= 2 and f >= 2: customer is'**At Risk**' Used to buy frequently, but **haven’t purchased recently**
- - if r <= 2 and f <= 2 and m <= 2: customer is **Hibernating**' Bought a long time ago, **rarely**, and **spent little**. Low-value, inactive customers.
- -  else: customer is **Others**' : Customers who don’t clearly fit any specific group above. Could be inconsistent or unpredictable buyers
+
+    if r >= 4 and f >= 4 and m >= 4: Champions : These are the best customers. Customers who bought very recently (high Recency score). Buy very frequently (high Frequency score) and spend a lot (high Monetary score)
+    
+    elif f >= 4 and r >= 2: Loyal Customers : These customers are consistent buyers and fairly recent but may not have spent as much or very recently as Champions. They are valuable and likely to stick around. They buy frequently (Frequency score is high) and purchased somewhat recently
+        
+    elif r == 5 and f <= 2:'New Customers': These customers just made their first or second purchase. They’re new to your brand and could become loyal with good engagement. They purchased very recently and have only bought once or twice
+  
+    elif r <= 2 and f >= 3:'At Risk' : These customers used to be active but haven’t returned lately. They need attention. They haven’t purchased recently but they used to buy frequently
+
+    Rest:  'Low-Value': These customers don’t contribute much currently or are inactive.
+
+rfm_df['Segment'] = rfm_df.apply(rfm_segment, axis=1)
 
 ```python
 customer_data1 = customer_data.groupby('customer_unique_id').first().reset_index()
@@ -630,25 +638,74 @@ rfm_df = rfm_df.merge(customer_data1, on='customer_unique_id', how='left')
 ```python
 rfm_df.head()
 ```
-
-| customer_unique_id                     | Recency | Frequency | Monetary | R_score | F_score | M_score | RFM_Score | Segment      | customer_state | region     |
-|----------------------------------------|---------|-----------|----------|---------|---------|---------|-----------|--------------|----------------|------------|
-| 0000366f3b9a7992bf8c76cfdf3221e2       | 111     | 1         | 141.90   | 4       | 1       | 4       | 414       | Others       | SP             | Southeast  |
-| 0000b849f77a49e4a4ce2b2a4ca5be3f       | 114     | 1         | 27.19    | 4       | 1       | 1       | 411       | Others       | SP             | Southeast  |
-| 0000f46a3911fa3c0805444483337064       | 537     | 1         | 86.22    | 1       | 1       | 2       | 112       | Hibernating  | SC             | South      |
-| 0000f6ccb0745a6a4b88665a16c9f078       | 321     | 1         | 43.62    | 2       | 1       | 1       | 211       | Hibernating  | PA             | North      |
-| 0004aac84e0df4da2b147fca70cf8255       | 288     | 1         | 196.89   | 2       | 1       | 4       | 214       | Others       | SP             | Southeast  |
+| customer_unique_id                    | Recency | Frequency | Monetary | R_score | F_score | M_score | RFM_Score | Segment    | customer_state | region    |
+|-------------------------------------|---------|-----------|----------|---------|---------|---------|-----------|------------|----------------|-----------|
+| 0000366f3b9a7992bf8c76cfdf3221e2    | 111     | 1         | 141.9    | 4       | 1       | 4       | 414       | Low-Value  | SP             | Southeast |
+| 0000b849f77a49e4a4ce2b2a4ca5be3f    | 114     | 1         | 27.19    | 4       | 1       | 1       | 411       | Low-Value  | SP             | Southeast |
+| 0000f46a3911fa3c0805444483337064    | 537     | 1         | 86.22    | 1       | 1       | 2       | 112       | Low-Value  | SC             | South     |
+| 0000f6ccb0745a6a4b88665a16c9f078    | 321     | 1         | 43.62    | 2       | 1       | 1       | 211       | Low-Value  | PA             | North     |
+| 0004aac84e0df4da2b147fca70cf8255    | 288     | 1         | 196.89   | 2       | 1       | 4       | 214       | Low-Value  | SP             | Southeast |
 
 
 Pie chart show Customer Segmentation
+
 ![image](https://github.com/user-attachments/assets/84e84d86-5961-46f7-bdb4-ceea9ac1ada3)
 
-Filter SP and champion customer, picture blow show to 5 best selling items
-![image](https://github.com/user-attachments/assets/965e4b1f-90c3-4d8a-985b-e83c26747246)
 
+#### **👶👵Customer Segment Characteristics**
 
+![image](https://github.com/user-attachments/assets/1a3b07d8-e17d-4875-bbf9-cfac5acda467)
 
-#### Suggestions
+**1. Champion**
+   
+   ![image](https://github.com/user-attachments/assets/486756eb-2588-4ea3-bb3f-f872cf523d15)
+
+  -  Top 5 best selling products- the most preferable products of this type: bed bath table, health_beauty, watch_gifts, furniture_decor, housewares
+  -  Champion customer likely to place order on monday and Thurday and in all time of the day but just few on late night and early morning
+  -  Average payment installments is 4 higher than average which show that champion customer tend to pay order with many installments.
+  -  They also have the highest average on order - show amount they paid for one order. This team has great potential in the high-end product segment. Since amount they paid for one order is highest.
+    
+**3. Loyal customers**
+
+Top product which has grow sold > 150% and total sold items > 700 items In 2018 
+
+![image](https://github.com/user-attachments/assets/587234e1-051f-4934-86cf-df12a61ca40e)
+- Loyal Customers: Top 5 the most selected products bed bath table, health_beauty,sport_leisure, computer_accessories, furniture_decor
+- Potential products: telephony, watch_gift
+- Loyal customer usually place order on monday and tuesday and in late evening and afternoon
+- Avg delivery time is higher than average. This indicates that it need to be improve to improve review_score and customer experience\
+- Amount they pay for one order is lowest. It is possible that competitive price will need to focus on this team
+  
+**4. New customers****
+
+   ![image](https://github.com/user-attachments/assets/23eced17-2752-41ce-b19b-35a8d427c359)
+
+   
+   - Top 5 the most selected products health_beauty, bed bath table, housewares, sport_leisure, watch_gifts
+  - Many new customers place order on Tuesday and wednesday and in all time of the day accept late night or early morning are less
+  - Most of package delivered to this type of customer faster than usual --> review score is highest among
+  - 
+**5. At risk**
+
+![image](https://github.com/user-attachments/assets/302f2836-edda-411c-8b2c-4ef5da0f7c43)
+
+- Top 5 the most selected products bed bath table, health_beauty, sport_leisure, furniture_decor, computer_accessories
+- None of them have order in 2018, so base on data on 2017, we can see that bad_bath_table has most request of 2017 and demand compare with 2016 is notible
+- Avg delivery time is higher than average. it also connects with review_score. So delivery time need to be impove
+  
+**6. Low value**
+
+Top product which has grow sold > 150% and total sold items > 700 items In 2018 
+
+![image](https://github.com/user-attachments/assets/284ea96c-e165-4d64-be90-3860c1b21243)
+
+- Low-Value:Top 5 best selling products bed bath table, furniture_decor, sport_leisure,health_beauty, housewares
+- Watch_gift and electronic are potential products for this type of customer
+- Avg delivery time is higher than average, it also connects with review_score. So delivery time need to be improve
+  
+All customer prefer to pay order by credit card and boleto
+
+#### Recommendation
 
 Olist was establish in 2015, in period 2015-2018 is good to make new customer, but after this period, the more important that we need to retain customer then make a loyal customer
 
