@@ -304,15 +304,13 @@ plt.show()
 
 ### 💡Insights
 
-🔥 Strong Correlations (|corr| > 0.7):
+🔥 Strong Correlations 
 
 - price and total_value show a very strong positive correlation: 0.92. This makes sense, as price is a major component of the total order value. The more expensive items sold, it contribute more to total revenue
 
-- total_item_order and total_value: 0.94. The more items ordered, the higher the total order value.
+- product_weight_g and freight_value: 0.62. Heavier products tend to incur higher shipping costs.
 
-- product_weight_g and freight_value: 0.78. Heavier products tend to incur higher shipping costs.
-
-- product_weight_g and total_value: 0.70. Heavier products are often more expensive, contributing to a higher total value.
+- product_weight_g and total_value: 0.46. Heavier products are often more expensive, contributing to a higher total value.
 
 
 ### 2.2.2 Retained Customer correlation
@@ -351,8 +349,9 @@ sns.heatmap(retained_corr_matrix, annot=True, cmap='coolwarm', fmt=".2f")
 plt.title("Customer retention Correlation Heatmap", fontsize=14)
 plt.show()
 ```
+![tải xuống](https://github.com/user-attachments/assets/a0511451-1998-41ac-8a34-c59f9a2e2af0)
 
-![tải xuống (1)](https://github.com/user-attachments/assets/cef1d046-52e6-4b6c-a3a1-8a915c2dd421)
+
 **💡Insight**
 
 - total_orders with customer retention (0.77): Customers with more total orders are more likely to be retained.
@@ -389,8 +388,9 @@ plt.show()
 ## Visualize and analysis
 ## 1. Sales trend
 
+![image](https://github.com/user-attachments/assets/b402d220-2c01-450f-b9ce-e88d718a5530)
 
-![z6614602329554_ea563dbfcc955b680f52e91d5a28567d](https://github.com/user-attachments/assets/5d980ce9-99dc-4d8f-aeab-03cbca52ed10)
+
 **Fig.1:** Sales Dashboard
 
  In general, revenue and total order number inscreased through the year, in 2018 revenue each moth increased double compare with 2017. Notiblely, sales increase in end of the year 2017 in Nov, Dec and also Jan. Peak season in these months
@@ -411,16 +411,12 @@ Notably, data show only 8 months in 2018 however, revenue increased 22.4% , tota
 **Fig.3:** Top 5 product catergories by revenue
 
 Top 5 product catergories have the highest revenue repectively
-- Bed_bad_table (number 1)
-- health_beauty
+- Bed_bad_table : 
+- health_beauty : , it sold 5800 items which the top 1 the best selling in 2018.
 - Sport_lesure
 - computer accessories
 - watch_gift
-, it sold 5800 items which the top 1 the best selling in 2018. 
-
-Revenue, number of sold items and AOV of top 10 products
-![z6614722791519_a700b0f9538b5dc5faae971f21070126](https://github.com/user-attachments/assets/ad28aebe-cbc4-40a1-bbf6-0d80b40bb893)
-**Fig.4:** Top 10 best selling group_product
+ 
 
 This below picture is the reverse: the bottom 10 product groups with the lowest performance in their category
 ![z6614740006804_eff3e99899411c3836a594a61a0d8da3](https://github.com/user-attachments/assets/e0e73339-a6fb-417d-b99e-6f9369ec86b9)
@@ -429,14 +425,24 @@ This below picture is the reverse: the bottom 10 product groups with the lowest 
 Revenue by new customer accounts for the majority revenue (average 99.9% in 3 years)
 ![image](https://github.com/user-attachments/assets/d344dbff-7198-4c89-8c05-e25ae7259f81)
 
-Top 5 citys have highest orders: Include SP, RJ, MG, RS, PR
+Top 5 citys have highest revenue: Include SP, RJ, MG, RS, PR
 - SP also contribute the higest revenue, which account 30% total revenue in 2018 increase 10% compared with 2017 market share. Only 5 states above account for more than 50% total revenue of all state (2018). This number is around 45% in 2017
-![image](https://github.com/user-attachments/assets/c0017e4a-62ad-4cdf-96b1-7a0b692a4f5a)
+![image](https://github.com/user-attachments/assets/15e56f1f-c2b0-4235-b4df-d9d4187506bc)
+
 
 **Revenue by day in week and time**
 Orders placed in monday and tuesday bring more revenue than other days in week. Whiles, afternoon and late night also bring more revenue than other time in a day. 
 
 ![image](https://github.com/user-attachments/assets/4db2ad7b-a3c5-47d7-96e2-72681ae5b502)
+
+**Revenue YTD**
+
+- The Total_revenue YTD shows a steady upward trend throughout both 2017 and 2018.
+
+- Revenue accumulates consistently over the months, indicating stable sales performance during the two years.
+
+![image](https://github.com/user-attachments/assets/a21f30ac-b1b2-487e-959d-f91d2e990212)
+
 
 **🔍 What do we see through the charts?**
 - ✅ Revenue and total order number inscreased year by year, this is because Olist was enstablished in 2015, in period 2017., 2018, system maybe more stable and more popular so more orders. Moreover, in 2018 ecommerce in Brazil become more recognized so people buying product via e-market more.
@@ -445,6 +451,28 @@ Orders placed in monday and tuesday bring more revenue than other days in week. 
 - ✅ Top 5 states have highest revenue : SP, RJ, MG, RS, PR, only 5 these states but account for half of total revenue
 - Bed_bad_table, health_beauty, Sport_lesure, computer accessories, watch_gift these product groups have highest revenue and demand in this period. Only 5 products group but account for approximately 55% total revenue. In this list, health_beauty contributed sinificantly in total revenue.
 - ✅ Most revenue is contribued by new customer (about 99%)
+
+**What caused sales increased in those years?**
+There are only 2 months in 2016 in this data, So trend focuses on 2017 and 2018_
+![image](https://github.com/user-attachments/assets/3697d769-812a-4b1e-bd13-c5d960bcda68)
+
+1.  Number of product increased sharply . In 2018, there are total 20090 products , increased 20.22% compared with 2017.
+2. Total about 60k items sold in 2018 compare wih 49K in 2017
+3. New customer in 2018 increase 21.21% compared with 2017
+4. The top 2 best-selling product groups have seen a significant expansion in their product catalogs compared with 2017. They are  are beauty healthy( 61.03%) , bed_bath_table (17.69%), computer_accesories (12.44%) while average all product is 1.1% . The demand for these products also increase notably  beauty healthy( 62.93%) ,  computer_accesories (53.84%)
+![image](https://github.com/user-attachments/assets/2c7ace13-4b87-4a5f-82d6-96d910bd2aa1)
+
+   
+**Why sales increase sharply in Nov 2017**
+![image](https://github.com/user-attachments/assets/e83a9776-95fd-465a-a399-5130274bf379)
+![image](https://github.com/user-attachments/assets/99f257ae-f381-48e0-82a2-8f86da89adbc)
+
+
+1. Number of product increased significantly from , 2731 in September, 2917 in October to 4371 in Novemeber. Item solds in this month increased tp 8400 items sold (growed 62% compared with october)
+2. New customers are 7011 Customers in November , increase 63% compared with the last month.
+3. Total product increased from 2917 product in Oct, to 4371 products in Nov
+4. There was an increase high demend for these product beauty healthy (76.58%,  bed_bath_table  (101%)
+![image](https://github.com/user-attachments/assets/0456e9b3-a8df-478d-887c-c86aade78827)
 
 
 ## 2. Customer behavior
