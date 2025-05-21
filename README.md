@@ -457,11 +457,11 @@ Orders placed in monday and tuesday bring more revenue than other days in week. 
 There are only 2 months in 2016 in this data, So trend focuses on 2017 and 2018_
 ![image](https://github.com/user-attachments/assets/3697d769-812a-4b1e-bd13-c5d960bcda68)
 
-1.  Number of product increased sharply . In 2018, there are total 20090 products , increased 20.22% compared with 2017.
-2. Total about 60k items sold in 2018 compare wih 49K in 2017
-3. New customer in 2018 increase 21.21% compared with 2017
-4. The top 2 best-selling product groups have seen a significant expansion in their product catalogs compared with 2017. They are  are beauty healthy( 61.03%) , bed_bath_table (17.69%), computer_accesories (12.44%) while average all product is 1.1% . The demand for these products also increase notably  beauty healthy( 62.93%) ,  computer_accesories (53.84%)
-5. 
+👉  Number of product increased sharply . In 2018, there are total 20090 products , increased 20.22% compared with 2017.
+👉 Total about 60k items sold in 2018 compare wih 49K in 2017
+👉 New customer in 2018 increase 21.21% compared with 2017
+👉 The top 2 best-selling product groups have seen a significant expansion in their product catalogs compared with 2017. They are  are beauty healthy( 61.03%) , bed_bath_table (17.69%), computer_accesories (12.44%) while average all product is 1.1% . The demand for these products also increase notably  beauty healthy( 62.93%) ,  computer_accesories (53.84%)
+
 ![image](https://github.com/user-attachments/assets/2c7ace13-4b87-4a5f-82d6-96d910bd2aa1)
 
    
@@ -471,10 +471,10 @@ There are only 2 months in 2016 in this data, So trend focuses on 2017 and 2018_
 ![image](https://github.com/user-attachments/assets/99f257ae-f381-48e0-82a2-8f86da89adbc)
 
 
-1. Number of product increased significantly from , 2731 in September, 2917 in October to 4371 in Novemeber. Item solds in this month increased tp 8400 items sold (growed 62% compared with october)
-2. New customers are 7011 Customers in November , increase 63% compared with the last month.
-3. Total product increased from 2917 product in Oct, to 4371 products in Nov
-4. There was an increase high demend for these product beauty healthy (76.58%,  bed_bath_table  (101%)
+👉 Number of product increased significantly from , 2731 in September, 2917 in October to 4371 in Novemeber. Item solds in this month increased tp 8400 items sold (growed 62% compared with october)
+👉 New customers are 7011 Customers in November , increase 63% compared with the last month.
+👉 Total product increased from 2917 product in Oct, to 4371 products in Nov
+👉 There was an increase high demend for these product beauty healthy (76.58%,  bed_bath_table  (101%)
 ![image](https://github.com/user-attachments/assets/0456e9b3-a8df-478d-887c-c86aade78827)
 
 
