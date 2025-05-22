@@ -3,10 +3,10 @@
 
 ## Purpose and outcome
 ### Purpose
-- Identify top product category and state by sale
+- Identify top product category and state by sales
 - Analyze sales trends over time to identify seasonality, growth patterns, and sales fluctuations.
 - Discover customer behavior
-- Uncover insights to help improve customer retention, marketing targeting, and sales strategy.
+- Uncover insights to help improve customer retention, marketing targeting.
 - Segment customers based on purchasing habits and engagement.
 
 ### Outcomes
@@ -14,7 +14,7 @@
 - Identified peak sales periods and trends by day, week, and month.
 - Visualized repeat purchase behavior and retention rates over time.
 - Performed RFM segmentation to group customers into categories 
-- Provide actionable recommendations for increasing retention and repeat customer rate
+- Provide recommendations for Customer Segmentation – Personalized Marketing
   
 ## 1. Introduction
 
@@ -29,7 +29,7 @@ Olist is a Brazilian e-commerce platform that connects small and medium-sized bu
 
 ●	Structure:
 
-1.	order_items.csv
+**1.	order_items.csv**
    
 -**Order_id** : order unique identifier
 -	**order_item_id**: sequential number identifying number of items included in the same order.
@@ -40,7 +40,7 @@ Olist is a Brazilian e-commerce platform that connects small and medium-sized bu
 -	**freight_value**: item freight value item (if an order has more than one item the freight value is splitted between items)
 
 
-2.	customers_data.csv
+**2.	customers_data.csv**
    
 -	**customer_id** : key to the orders dataset. Each order has a unique customer_id.
 -	**customer_unique_id** : unique identifier of a customer.
@@ -49,7 +49,7 @@ Olist is a Brazilian e-commerce platform that connects small and medium-sized bu
 -	**customer_state** : customer state
 
 
-3.	order_payments.csv
+**3.	order_payments.csv**
    
 -	**Order_id** : unique identifier of an order.
 -	**payment_sequential** : a customer may pay an order with more than one payment method. If he does so, a sequence will be created to
@@ -58,7 +58,7 @@ Olist is a Brazilian e-commerce platform that connects small and medium-sized bu
 -	**payment_value**: transaction value.
 
 
-4.	order_reviews.csv
+**4.	order_reviews.csv**
    
 -	**Order_id** : order unique identifier
 -	**review_id**: unique review identifier
@@ -69,7 +69,8 @@ Olist is a Brazilian e-commerce platform that connects small and medium-sized bu
 -	**review_answer_timestamp**: Shows satisfaction survey answer timestamp.
 
 
-5.	orders_dataset.csv
+**5.	orders_dataset.csv**
+
 - **Order_id** : unique identifier of the order
 -	**customer_id**: key to the customer dataset. Each order has a unique customer_id.
 -	**order_status**: Reference to the order status (delivered, shipped, etc).
@@ -80,7 +81,7 @@ Olist is a Brazilian e-commerce platform that connects small and medium-sized bu
 -	**order_estimated_delivery_date**: Shows the estimated delivery date that was informed to customer at the purchase moment.**
    
 
-6.	products_dataset.csv
+**6.	products_dataset.csv**
    
 -	**product_id**: unique product identifier
 -	**product_category_name**: root category of product, in Portuguese.
@@ -94,7 +95,7 @@ Olist is a Brazilian e-commerce platform that connects small and medium-sized bu
 
 
 
-7.	product_category_name_translation.csv
+**7.	product_category_name_translation.csv**
 
 -	**product_category_name** : category name in Portuguese
 -	**product_category_name_english**: category name in English
@@ -102,7 +103,7 @@ Olist is a Brazilian e-commerce platform that connects small and medium-sized bu
 
 ## Technologies Used
 
-* Google Colabs: using Python to load data, clean data and visualize heatmap to check correlation
+* Google Colabs: using Python to load data, clean data and visualize heatmap to check correlation, RFM 
   
 * Power Bi: visualizing the dataset.
 
@@ -131,6 +132,7 @@ There are some columns, we may not use them, so I delele it
 - Remove columns : product_name_lenght','product_description_lenght','product_photos_qty','product_length_cm','product_height_cm','product_width_cm' in product_datase
 
 - Remove column review_comment_title', 'review_comment_message and review_id in review_order
+  
 ### 2.1.2 Handling missing value
 
 There are missing values in orders_dataset, product_dataset and order_review.
@@ -140,12 +142,17 @@ There are missing values in orders_dataset, product_dataset and order_review.
 - Remove row have missing value in product_category_name of product_dataset
 
 ### 2.1.3 Join table
+
 #### product_dataset and product_name_translation
+
 Delete product_name_translation after merge table
+
 ####  order_review and orders_dataset
 - Recreate Order_review table, group by order_ID, review_score = average review_score of this order, get the fist line of review+creation_date and review_answer_timestamp if order has been reviewed more than 1
 - After merging table, delete order_review
+- 
 #### orders_dataset, order_items and order_payment
+
 For these table, we should not join them, instead of that, we keep order_ID which have in all tables
 ```python
 # filter common order_id in 2 table
@@ -184,9 +191,11 @@ There are 3 columns need to be added in dataframe orders_database
    * afternoon : 14 <= hour < 17:
    * Evening Peak : 17 <= hour < 20
    * Late Evening : after 20
+     
 There are errors in data, so result may < 0 sometime, flexiblity, we can use order_pusechased_timestamp instead of order_approved at
 
 Then convert data type after create new columns
+
 ####  Adding columns in order_items
 
 Add 2 columns in order_items
@@ -393,7 +402,7 @@ plt.show()
 
 **Fig.1:** Sales Dashboard
 
- In general, revenue and total order number inscreased through the year, in 2018 revenue each moth increased double compare with 2017. Notiblely, sales increase in end of the year 2017 in Nov, Dec and also Jan. Peak season in these months
+ In general, revenue and total order number inscreased through the year, in 2018 revenue each moth increased double compare with 2017. Notiblely, sales increase in end of the year 2017 in Nov, Dec . Peak season in these months
 ![z6614621357829_72b2a9c92a203176ad3308c9b5c8fffb](https://github.com/user-attachments/assets/b1cabbe6-ac3f-466e-b249-523fa8925e7e)
 **Fig.2:** Revenue and orders
 
@@ -445,7 +454,7 @@ Orders placed in monday and tuesday bring more revenue than other days in week. 
 
 
 #### **🔍 What do we see through the charts?**
-- ✅ Revenue and total order number inscreased year by year, this is because Olist was enstablished in 2015, in period 2017., 2018, system maybe more stable and more popular so more orders. Moreover, in 2018 ecommerce in Brazil become more recognized so people buying product via e-market more.
+- ✅ Revenue and total order number inscreased year by year, One of reason maybe because Olist was enstablished in 2015, in period 2017., 2018, system maybe more stable and more popular so more orders. Moreover, in 2018 ecommerce in Brazil become more recognized so people buying product via e-market more.
 - ✅ Through the year Nov, Dec are the month have most sales, it is maybe due to the holiday season of the year, when people tend to buy more to prepare for big holiday.
 - ✅ Orders placed in monday and tuesday bring more revenue than other days in week. Whiles, afternoon and late night also bring more revenue than other time in a day
 - ✅ Top 5 states have highest revenue : SP, RJ, MG, RS, PR, only 5 these states but account for half of total revenue
@@ -487,7 +496,7 @@ There are only 2 months in 2016 in this data, So trend focuses on 2017 and 2018_
 
 ## 2. Customer behavior
 
-Depending data, we can see that only 3.49% customer is old customer (who already bought at least 2 order), while new customer is 93K customer which account for 96.51% total customer in three years
+Depending data, we can see that only 3.49% customer is old customer (who already bought at least 2 orders), while new customer is 93K customer which account for 96.51% total customer in three years
 Average review_score is 4.16 (5 is the highest score)
 
 ![image](https://github.com/user-attachments/assets/86e419bc-d2f4-496a-b238-d6239a6464ae)
@@ -543,7 +552,7 @@ Most of customer paid one time instead of paid many time in one order.
 ![image](https://github.com/user-attachments/assets/a87d4e69-efe0-404f-a9a3-fb1485fbee6e)
 
 
-Customer tend to buy product in late evening and afternoon. More order was bought in monday and tuesday
+Customer tend to buy product in late evening and afternoon. And monday and tuesday in a week
 
 ### Retention
 ![image](https://github.com/user-attachments/assets/474f8094-e8ca-49c7-98e6-81f8381f7f03)
@@ -557,8 +566,8 @@ Customer tend to buy product in late evening and afternoon. More order was bough
 
 **🔍 What do we see through the charts?**
 
-- ✅ Majority order has 5 start rate, however the repeat customer is quite low around 3.49%.
-- ✅ Majority customers located in SP, RJ, MG, RS, PR but most of them buy one order only (has low repeat customer rate) While, RR, RJ, CE, MA, PI are top 5 state has highest repeat customer rate, they do not have many customer however, but customer paid for each order higher than top 5 states have highest customer number and higher than average order value in total.
+- ✅ Most customer give 5 review score, however the repeat customer is quite low around 3.49%.
+- ✅ Majority customers located in SP, RJ, MG, RS, PR but most of them buy one order only (has low repeat customer rate) While, RR, RJ, CE, MA, PI are top 5 state has highest repeat customer rate, they do not have many customers however, but customer paid for each order higher than top 5 states have highest customer number and higher than average order value in total.
 - ✅ Customer prefer to buy these product in olist Bed_bad_table, Sport_lesure, furniture decor, health_beauty, houseware
 - ✅ Customer prefer to use credit card to pay order, in average, customer usually prefer 3 insallment when they paid orders. Most Customer pays once for the order.
 - ✅ Buyer tend to buy product in late night or afternoon, it's possiblely because at that time, most people done work or most works are complete so they can spend time on internet and do shopping online. Most orders were placed on monday and tuesday, which shows that customer prefer to order in weekday, in beginning of the week.
@@ -604,19 +613,20 @@ rfm_df['R_score'] = pd.qcut(rfm_df['Recency'], 5, labels=[5, 4, 3, 2, 1])
 rfm_df['F_score'] = pd.qcut(rfm_df['Frequency'].rank(method='first'), 5, labels=[1, 2, 3, 4, 5])
 rfm_df['M_score'] = pd.qcut(rfm_df['Monetary'], 5, labels=[1, 2, 3, 4, 5])
 
-# Create RFM segment
-rfm_df['RFM_Score'] = rfm_df['R_score'].astype(str) + rfm_df['F_score'].astype(str) + rfm_df['M_score'].astype(str)
+
 ```
 We have table 
 
 
-| customer_unique_id                       | Recency | Frequency | Monetary | R_score | F_score | M_score | RFM_Score |
-|------------------------------------------|---------|-----------|----------|---------|---------|---------|------------|
-| 0000366f3b9a7992bf8c76cfdf3221e2         | 111     | 1         | 141.90   | 4       | 1       | 4       | 414        |
-| 0000b849f77a49e4a4ce2b2a4ca5be3f         | 114     | 1         | 27.19    | 4       | 1       | 1       | 411        |
-| 0000f46a3911fa3c0805444483337064         | 537     | 1         | 86.22    | 1       | 1       | 2       | 112        |
-| 0000f6ccb0745a6a4b88665a16c9f078         | 321     | 1         | 43.62    | 2       | 1       | 1       | 211        |
-| 0004aac84e0df4da2b147fca70cf8255         | 288     | 1         | 196.89   | 2       | 1       | 4       | 214        |
+| customer_unique_id                     | Recency | Frequency | Monetary | R_score | F_score | M_score |
+|----------------------------------------|---------|-----------|----------|---------|---------|---------|
+| 0000366f3b9a7992bf8c76cfdf3221e2       | 111     | 1         | 141.90   | 4       | 1       | 4       |
+| 0000b849f77a49e4a4ce2b2a4ca5be3f       | 114     | 1         | 27.19    | 4       | 1       | 1       |
+| 0000f46a3911fa3c0805444483337064       | 537     | 1         | 86.22    | 1       | 1       | 2       |
+| 0000f6ccb0745a6a4b88665a16c9f078       | 321     | 1         | 43.62    | 2       | 1       | 1       |
+| 0004aac84e0df4da2b147fca70cf8255       | 288     | 1         | 196.89   | 2       | 1       | 4       |
+
+
 
 ### 3.2 Clasify customer type based on RMF score
 
@@ -630,17 +640,17 @@ We clasify customer:
     
     m = int(row['M_score'])
 
-    if r >= 4 and f >= 4 and m >= 4: Champions : These are the best customers. Customers who bought very recently (high Recency score). Buy very frequently (high Frequency score) and spend a lot (high Monetary score)
+* if r >= 4 and f >= 4 and m >= 4: **Champions**: These are the best customers. Customers who bought very recently (high Recency score). Buy very frequently (high Frequency score) and spend a lot (high Monetary score)
     
-    elif f >= 4 and r >= 2: Loyal Customers : These customers are consistent buyers and fairly recent but may not have spent as much or very recently as Champions. They are valuable and likely to stick around. They buy frequently (Frequency score is high) and purchased somewhat recently
+* elif f >= 4 and r >= 2: **Loyal Customers** : These customers are consistent buyers and fairly recent but may not have spent as much or very recently as Champions. They are valuable and likely to stick around. They buy frequently (Frequency score is high) and purchased somewhat recently
         
-    elif r == 5 and f <= 2:'New Customers': These customers just made their first or second purchase. They’re new to your brand and could become loyal with good engagement. They purchased very recently and have only bought once or twice
+* elif r == 5 and f <= 2:'**New Customers**': These customers just made their first or second purchase. They’re new to your brand and could become loyal with good engagement. They purchased very recently and have only bought once or twice
   
-    elif r <= 2 and f >= 3:'At Risk' : These customers used to be active but haven’t returned lately. They need attention. They haven’t purchased recently but they used to buy frequently
+* elif r <= 2 and f >= 3:'**At Risk**' : These customers used to be active but haven’t returned lately. They need attention. They haven’t purchased recently but they used to buy frequently
 
-    Rest:  'Low-Value': These customers don’t contribute much currently or are inactive.
+* Rest:  '**Low-Value**': These customers don’t contribute much currently or are inactive.
 
-rfm_df['Segment'] = rfm_df.apply(rfm_segment, axis=1)
+
 
 ```python
 customer_data1 = customer_data.groupby('customer_unique_id').first().reset_index()
@@ -650,13 +660,13 @@ rfm_df = rfm_df.merge(customer_data1, on='customer_unique_id', how='left')
 ```python
 rfm_df.head()
 ```
-| customer_unique_id                    | Recency | Frequency | Monetary | R_score | F_score | M_score | RFM_Score | Segment    | customer_state | region    |
-|-------------------------------------|---------|-----------|----------|---------|---------|---------|-----------|------------|----------------|-----------|
-| 0000366f3b9a7992bf8c76cfdf3221e2    | 111     | 1         | 141.9    | 4       | 1       | 4       | 414       | Low-Value  | SP             | Southeast |
-| 0000b849f77a49e4a4ce2b2a4ca5be3f    | 114     | 1         | 27.19    | 4       | 1       | 1       | 411       | Low-Value  | SP             | Southeast |
-| 0000f46a3911fa3c0805444483337064    | 537     | 1         | 86.22    | 1       | 1       | 2       | 112       | Low-Value  | SC             | South     |
-| 0000f6ccb0745a6a4b88665a16c9f078    | 321     | 1         | 43.62    | 2       | 1       | 1       | 211       | Low-Value  | PA             | North     |
-| 0004aac84e0df4da2b147fca70cf8255    | 288     | 1         | 196.89   | 2       | 1       | 4       | 214       | Low-Value  | SP             | Southeast |
+| customer_unique_id                     | Recency | Frequency | Monetary | R_score | F_score | M_score | Segment   | customer_state | region    |
+|----------------------------------------|---------|-----------|----------|---------|---------|---------|-----------|----------------|-----------|
+| 0000366f3b9a7992bf8c76cfdf3221e2       | 111     | 1         | 141.90   | 4       | 1       | 4       | Low-Value | SP             | Southeast |
+| 0000b849f77a49e4a4ce2b2a4ca5be3f       | 114     | 1         | 27.19    | 4       | 1       | 1       | Low-Value | SP             | Southeast |
+| 0000f46a3911fa3c0805444483337064       | 537     | 1         | 86.22    | 1       | 1       | 2       | Low-Value | SC             | South     |
+| 0000f6ccb0745a6a4b88665a16c9f078       | 321     | 1         | 43.62    | 2       | 1       | 1       | Low-Value | PA             | North     |
+| 0004aac84e0df4da2b147fca70cf8255       | 288     | 1         | 196.89   | 2       | 1       | 4       | Low-Value | SP             | Southeast |
 
 
 Pie chart show Customer Segmentation
@@ -682,6 +692,7 @@ Pie chart show Customer Segmentation
 Top product which has grow sold > 150% and total sold items > 700 items In 2018 
 
 ![image](https://github.com/user-attachments/assets/587234e1-051f-4934-86cf-df12a61ca40e)
+
 - Loyal Customers: Top 5 the most selected products bed bath table, health_beauty,sport_leisure, computer_accessories, furniture_decor
 - Potential products: telephony, watch_gift
 - Loyal customer usually place order on monday and tuesday and in late evening and afternoon
@@ -722,7 +733,7 @@ All customer prefer to pay order by credit card and boleto
 
 ### Recommendation
 
-Olist was establish in 2015, in period 2015-2018 is good to make new customer, but after this period, the more important that we need to retain customer then make a loyal customer
+Olist was establish in 2015, in period 2015-2018 is good to make new customer, but after this period, the more important that we need to retain customer then make a loyal customer. To do that We need to segment our customers then make a personalize marketing plan for each.
 
 #### **💡General for all segments**
 
@@ -738,7 +749,7 @@ Olist was establish in 2015, in period 2015-2018 is good to make new customer, b
 
 
 
-#### **💡 Customize for each customer segments**
+#### **💡 Personalize stratergy for each customer segments**
 
 #### **1. Champion**
 
