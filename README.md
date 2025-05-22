@@ -619,10 +619,15 @@ We have table
 | 0004aac84e0df4da2b147fca70cf8255         | 288     | 1         | 196.89   | 2       | 1       | 4       | 214        |
 
 ### 3.2 Clasify customer type based on RMF score
+
 We clasify customer:
+
  def rfm_segment(row):
+ 
     r = int(row['R_score'])
+    
     f = int(row['F_score'])
+    
     m = int(row['M_score'])
 
     if r >= 4 and f >= 4 and m >= 4: Champions : These are the best customers. Customers who bought very recently (high Recency score). Buy very frequently (high Frequency score) and spend a lot (high Monetary score)
