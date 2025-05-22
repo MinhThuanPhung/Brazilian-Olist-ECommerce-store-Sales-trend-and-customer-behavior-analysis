@@ -685,7 +685,7 @@ Top product which has grow sold > 150% and total sold items > 700 items In 2018
 - Loyal Customers: Top 5 the most selected products bed bath table, health_beauty,sport_leisure, computer_accessories, furniture_decor
 - Potential products: telephony, watch_gift
 - Loyal customer usually place order on monday and tuesday and in late evening and afternoon
-- Avg delivery time is higher than average. This indicates that it need to be improve to improve review_score and customer experience\
+- Avg delivery time is higher than average. This indicates that it need to be improve to improve review_score and customer experience
 - Amount they pay for one order is lowest. It is possible that competitive price will need to focus on this team
   
 **4. New customers****
@@ -696,14 +696,16 @@ Top product which has grow sold > 150% and total sold items > 700 items In 2018
    - Top 5 the most selected products health_beauty, bed bath table, housewares, sport_leisure, watch_gifts
   - Many new customers place order on Tuesday and wednesday and in all time of the day accept late night or early morning are less
   - Most of package delivered to this type of customer faster than usual --> review score is highest among
-  - 
+  - avg amount per order is rank sencond, potentially can offer high_end products
+    
 **5. At risk**
 
 ![image](https://github.com/user-attachments/assets/302f2836-edda-411c-8b2c-4ef5da0f7c43)
 
 - Top 5 the most selected products bed bath table, health_beauty, sport_leisure, furniture_decor, computer_accessories
-- None of them have order in 2018, so base on data on 2017, we can see that bad_bath_table has most request of 2017 and demand compare with 2016 is notible
+- None of them have order in 2018, so base on data on 2017, we can see that bad_bath_table has most request of 2017 and demand compare with 2016
 - Avg delivery time is higher than average. it also connects with review_score. So delivery time need to be impove
+- amount per order is lower than average. The competitive price may win them back.
   
 **6. Low value**
 
@@ -713,7 +715,8 @@ Top product which has grow sold > 150% and total sold items > 700 items In 2018
 
 - Low-Value:Top 5 best selling products bed bath table, furniture_decor, sport_leisure,health_beauty, housewares
 - Watch_gift and electronic are potential products for this type of customer
-- Avg delivery time is higher than average, it also connects with review_score. So delivery time need to be improve
+- Avg delivery time is higher than average and highest, review score is lowest. So delivery time need to be improve
+
   
 All customer prefer to pay order by credit card and boleto
 
@@ -727,7 +730,7 @@ Olist was establish in 2015, in period 2015-2018 is good to make new customer, b
 
 - Boost Sales at Week Start: Launch promotions or email blasts on Mondays and Tuesdays.
 
-- Personalize mail or ads depending on the history buying and give suggestion for top pick product or related products based on prefered product.s.
+- Personalize mail or ads depending on the history buying and give suggestion for top pick product or related products and deals based on prefered product and & active shopping times of each group and personal.
 
 - Encourage bulk buying:  boost cross-category sales since customers who buy more items per order are more likely to return (per heatmap insights).
 
@@ -739,36 +742,32 @@ Olist was establish in 2015, in period 2015-2018 is good to make new customer, b
 
 #### **1. Champion**
 
-1. Exclusive VIP or Loyalty Programs: Offer premium perks, priority delivery, and special services.
-2. Upsell/Cross-sell High-End Products: These customers are more willing to spend more per order.
-3. Personalized Communication: Send tailored emails on Mondays and Thursdays — their most active days.
-4. Flexible Installment Plans: Since they tend to prefer paying in multiple installments, offer more options.
+1. Upsell/Cross-sell High-End Products: These customers are more willing to spend more per order.
+2. Flexible Installment Plans: Since they tend to prefer paying in multiple installments, offer more options.
 
 #### **2. Loyal Customers**
 
 1. Improve Delivery Speed: Faster delivery can increase review scores and satisfaction.
-2. Targeted Discounts on Buying Days: Offer deals on Mondays and Tuesdays, especially in the afternoon/evening.
-3. Encourage Higher Spending: Bundle products or offer tiered discounts for larger carts.
-4. Introduce Potential Products: Suggest products like telephony or watch_gift to diversify their interests.
+2. Encourage Higher Spending: Bundle products or offer tiered discounts for larger carts.
 
 
 #### **3. New Customers**
 
-1. Welcome Campaign: Send onboarding emails with guides, product recommendations, and discounts on the next order.
-2. Post-Purchase Care: Follow up with satisfaction surveys and personalized product suggestions.
-3. Early-Bird Offers: Provide special discounts during the first week after purchase.
+1. Recommendation high_end products
 
 
 #### **4. At Risk Customers**
 
-1. Automated Win-Back Campaigns: Use email or SMS to send personalized offers and reminders.
-2. Focus on Delivery Improvement: Faster and more reliable shipping is key.
-3. Customer Feedback: Run simple surveys to understand why they left.
+1. Focus on Delivery Improvement: Faster and more reliable shipping is key.
+
 
 #### **5. Low-Value Customers**
 
-1. Regular Promotions: Offer seasonal discounts or product bundles to drive engagement.
-2. Popular Product Suggestions: Recommend top-selling items like bed bath table, sport_leisure, etc.
+1. Post-Purchase Care: Follow up with satisfaction surveys to increase review score
+2. Offer Expedited shipping Options with voucher
+
+
+
 
 
 
