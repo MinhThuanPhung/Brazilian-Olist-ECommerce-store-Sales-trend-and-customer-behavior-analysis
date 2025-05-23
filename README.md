@@ -529,7 +529,7 @@ Customer tend to buy product in late evening and afternoon. And monday and tuesd
 - ✅ Customer prefer to use credit card to pay order, in average, customer usually prefer 3 insallment when they paid orders. Most Customer pays once for the order.
 - ✅ Buyer tend to buy product in late night or afternoon, it's possiblely because at that time, most people done work or most works are complete so they can spend time on internet and do shopping online. Most orders were placed on monday and tuesday, which shows that customer prefer to order in weekday, in beginning of the week.
 - ✅ Retention decline over the time with low rate in all cohort month. This suggests issues with long-term engagement, possibly due to: lack of loyalty incentives or Low purchase frequency by nature of the product or Poor follow-up marketing or customer experience.
-- ✅ Bases on heatmap, We can see the relationship betwween retained customer with total item order is quite high. It notibaly shows that customer buy more item in order will have higher rate to buy more.
+- ✅ Most customer buy 1 item per order. Need action to stimulate customer buy more.
 - ✅ Heatmap show negative relationship betwween delivery time and review_score. It means that customer tend to give higher score if order has short delivery time.
 
 ## 3.  RFM Analysis
@@ -700,8 +700,8 @@ Olist was establish in 2015, in period 2015-2018 is good to make new customer, b
 
 - Personalize mail or ads depending on the history buying and give suggestion for top pick product or related products and deals based on prefered product and & active shopping times of each group and personal.
 
-- Encourage bulk buying:  boost cross-category sales since customers who buy more items per order are more likely to return (per heatmap insights).
-
+- Encourage bulk buying:  boost cross-category sales since most customer select 1 item in order.
+  
 - End of year sale (Nov, Dec) to maximized sales
 
 
