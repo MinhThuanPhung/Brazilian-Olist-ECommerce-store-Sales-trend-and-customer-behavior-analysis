@@ -308,67 +308,24 @@ plt.title('Sales Correlation Matrix Heatmap')
 
 plt.show()
 ```
-![tải xuống (4)](https://github.com/user-attachments/assets/060ce184-bdb6-4048-b97e-da001c5fd696)
+
+![tải xuống (3)](https://github.com/user-attachments/assets/4c181ea4-5059-419c-82b2-4f7bd382380f)
 
 
 ### 💡Insights
 
 🔥 Strong Correlations 
 
-- price and total_value show a very strong positive correlation: 0.92. This makes sense, as price is a major component of the total order value. The more expensive items sold, it contribute more to total revenue
+- price and total_value show a very strong positive correlation: 0.92. The more expensive items sold, it contribute more to total revenue
 
 - product_weight_g and freight_value: 0.62. Heavier products tend to incur higher shipping costs.
 
 - product_weight_g and total_value: 0.46. Heavier products are often more expensive, contributing to a higher total value.
+-  total_value and freight_value / product_weight_g:
+morderate possitive correlations (0.46, 0.37). Order value is somewhat affected by shipping and weight. more Heavier product sold, more revenue get.
+- review_score and delivery_time:Moderate negative correlation (-0.33). Longer delivery times reduce customer satisfaction.
 
 
-### 2.2.2 Retained Customer correlation
-
-##### creating retained_corr_matrix dataframe 
-
-``` python
-# count number of order by each customer
-order_counts = df2.groupby('customer_unique_id').size()
-
-# Khách retained nếu mua > 1 lần
-retained_customers = order_counts[order_counts > 1].index
-
-# label retained
-df2['is_retained'] = df2['customer_unique_id'].isin(retained_customers).astype(int)
-```
-
-
-```python
-retained_df = df2.groupby('customer_unique_id').agg({
-    'is_retained': 'first',
-    'order_id': 'count',
-    'total_item_order': 'first',
-    'price': 'sum',
-    'freight_value': 'sum',
-    'review_score': 'mean',
-    'handling_time': 'mean',
-    'region': 'first'
-
-}).rename(columns={'order_id': 'total_orders'})
-```
-```python
-retained_corr_matrix = retained_df.corr()
-plt.figure(figsize=(8, 6))
-sns.heatmap(retained_corr_matrix, annot=True, cmap='coolwarm', fmt=".2f")
-plt.title("Customer retention Correlation Heatmap", fontsize=14)
-plt.show()
-```
-![tải xuống](https://github.com/user-attachments/assets/a0511451-1998-41ac-8a34-c59f9a2e2af0)
-
-
-**💡Insight**
-
-- total_orders with customer retention (0.77): Customers with more total orders are more likely to be retained.
-
-- total_item_order with customer retention (0.70): Customers ordering more items are more likely to stay.
-
-- freight_value with customer retention (0.37): Higher shipping value has a moderate positive correlation with retention.
-- review_score has a moderate negative correlation with delivery_time (-0.33), which makes sense—longer delivery often leads to lower review scores.
 ## Process in Power BI
 - Create a new table named calendar show all date from all dataframe:  Calendar = CALENDARAUTO()
 - Create a table name payment_distinct which each orderid has one row only, get max of payment_sequential and sum of payment_installments from table order_payments
