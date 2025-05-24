@@ -414,9 +414,9 @@ Orders placed in monday and tuesday bring more revenue than other days in week. 
 - ✅ Revenue and total order number inscreased year by year, One of reason maybe because Olist was enstablished in 2015, in period 2017., 2018, system maybe more stable and more popular so more orders. Moreover, in 2018 ecommerce in Brazil become more recognized so people buying product via e-market more. This trend is good sign show that revenue is good and tend to increase in the future
 - ✅ Through the year Nov, Dec are the month have most sales, it is maybe due to the holiday season of the year, when people tend to buy more to prepare for big holiday. So we need to make campain to maximize the revenue in this time 
 - ✅ Orders placed in monday and tuesday bring more revenue than other days in week. Whiles, afternoon and late night also bring more revenue than other time in a day. We need to optimize system at that time, to make sure customer order without issue, make more promotion to incraease sales. 
-- ✅ Top 5 states have highest revenue : SP, RJ, MG, RS, PR, only 5 these states but account for half of total revenue
+- ✅ Top 5 states have highest revenue : SP, RJ, MG, RS, PR, only 5 these states but account for half of total revenue. Campain, promotion and serice need to paymore attention in these state to increase sales.
 - Bed_bad_table, health_beauty, Sport_lesure, computer accessories, watch_gift these product groups have highest revenue and demand in this period. Only 5 products group but account for approximately 55% total revenue. In this list, health_beauty contributed sinificantly in total revenue. We can make more recongnization for these products, to make them become specific products in Olist. From that can catch more sales from these products
-- ✅ Most revenue is contribued by new customer (about 96.51%). 
+- ✅ Most revenue is contribued by new customer (about 96.51%). Olist may think to retain new customer and make them become loyal
 
 #### **🤔 What caused sales increased in those years?**
 
