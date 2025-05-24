@@ -411,12 +411,12 @@ Orders placed in monday and tuesday bring more revenue than other days in week. 
 
 
 #### **🔍 What do we see through the charts?**
-- ✅ Revenue and total order number inscreased year by year, One of reason maybe because Olist was enstablished in 2015, in period 2017., 2018, system maybe more stable and more popular so more orders. Moreover, in 2018 ecommerce in Brazil become more recognized so people buying product via e-market more.
-- ✅ Through the year Nov, Dec are the month have most sales, it is maybe due to the holiday season of the year, when people tend to buy more to prepare for big holiday.
-- ✅ Orders placed in monday and tuesday bring more revenue than other days in week. Whiles, afternoon and late night also bring more revenue than other time in a day
+- ✅ Revenue and total order number inscreased year by year, One of reason maybe because Olist was enstablished in 2015, in period 2017., 2018, system maybe more stable and more popular so more orders. Moreover, in 2018 ecommerce in Brazil become more recognized so people buying product via e-market more. This trend is good sign show that revenue is good and tend to increase in the future
+- ✅ Through the year Nov, Dec are the month have most sales, it is maybe due to the holiday season of the year, when people tend to buy more to prepare for big holiday. So we need to make campain to maximize the revenue in this time 
+- ✅ Orders placed in monday and tuesday bring more revenue than other days in week. Whiles, afternoon and late night also bring more revenue than other time in a day. We need to optimize system at that time, to make sure customer order without issue, make more promotion to incraease sales. 
 - ✅ Top 5 states have highest revenue : SP, RJ, MG, RS, PR, only 5 these states but account for half of total revenue
-- Bed_bad_table, health_beauty, Sport_lesure, computer accessories, watch_gift these product groups have highest revenue and demand in this period. Only 5 products group but account for approximately 55% total revenue. In this list, health_beauty contributed sinificantly in total revenue.
-- ✅ Most revenue is contribued by new customer (about 99%)
+- Bed_bad_table, health_beauty, Sport_lesure, computer accessories, watch_gift these product groups have highest revenue and demand in this period. Only 5 products group but account for approximately 55% total revenue. In this list, health_beauty contributed sinificantly in total revenue. We can make more recongnization for these products, to make them become specific products in Olist. From that can catch more sales from these products
+- ✅ Most revenue is contribued by new customer (about 96.51%). 
 
 #### **🤔 What caused sales increased in those years?**
 
@@ -524,13 +524,13 @@ Customer tend to buy product in late evening and afternoon. And monday and tuesd
 **🔍 What do we see through the charts?**
 
 - ✅ Most customer give 5 review score, however the repeat customer is quite low around 3.49%.
-- ✅ Majority customers located in SP, RJ, MG, RS, PR but most of them buy one order only (has low repeat customer rate) While, RR, RJ, CE, MA, PI are top 5 state has highest repeat customer rate, they do not have many customers however, but customer paid for each order higher than top 5 states have highest customer number and higher than average order value in total.
-- ✅ Customer prefer to buy these product in olist Bed_bad_table, Sport_lesure, furniture decor, health_beauty, houseware
-- ✅ Customer prefer to use credit card to pay order, in average, customer usually prefer 3 insallment when they paid orders. Most Customer pays once for the order.
-- ✅ Buyer tend to buy product in late night or afternoon, it's possiblely because at that time, most people done work or most works are complete so they can spend time on internet and do shopping online. Most orders were placed on monday and tuesday, which shows that customer prefer to order in weekday, in beginning of the week.
+- ✅ Majority customers located in SP, RJ, MG, RS, PR but most of them buy one order only.  While, RR, RJ, CE, MA, PI are top 5 state has highest repeat customer rate, they do not have many customers however, but customer paid for each order higher than top 5 states have highest customer number and higher than average order value in total. 
+- ✅ Customer prefer to buy these product in olist Bed_bad_table, Sport_lesure, furniture decor, health_beauty, houseware. So we need to make sure about stock for these products and can make a advertisement to increase increase Olist recognition
+- ✅ Customer prefer to use credit card to pay order, in average, customer usually prefer 3 insallment when they paid orders. Most Customer pays once for the order. So Olist need to maitain frequently payment by credit card to make sure that less issue appear when customer make a payment
+- ✅ Buyer tend to buy product in late night or afternoon, it's possiblely because at that time, most people done work or most works are complete so they can spend time on internet and do shopping online. Most orders were placed on monday and tuesday, which shows that customer prefer to order in weekday, in beginning of the week. Depend on it Olist can make a advertisement or campain at that specific time to catch customer attention, from that can increase orders
 - ✅ Retention decline over the time with low rate in all cohort month. This suggests issues with long-term engagement, possibly due to: lack of loyalty incentives or Low purchase frequency by nature of the product or Poor follow-up marketing or customer experience.
 - ✅ Most customer buy 1 item per order. Need action to stimulate customer buy more.
-- ✅ Heatmap show negative relationship betwween delivery time and review_score. It means that customer tend to give higher score if order has short delivery time.
+- ✅ Heatmap show negative relationship betwween delivery time and review_score. It means that customer tend to give higher score if order has short delivery time. Olist can make improve in delivery to improve average score from that can make a competitive with other competitors
 
 ## 3.  RFM Analysis
 
